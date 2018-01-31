@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "former-kit": "0.0.3",
-    "former-kit-skin-pagarme": "0.0.2"
+    "former-kit": "0.0.7",
+    "former-kit-skin-pagarme": "0.0.4"
   }
 }

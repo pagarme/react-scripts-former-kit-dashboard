@@ -91,6 +91,7 @@ module.exports = function(
 
   let command;
   let args;
+  let needInstall = false;
 
   if (useYarn) {
     command = 'yarnpkg';
@@ -99,7 +100,13 @@ module.exports = function(
     command = 'npm';
     args = ['install', '--save', verbose && '--verbose'].filter(e => e);
   }
-  args.push('react', 'react-dom');
+
+  // Install react and react-dom for backward compatibility with old CRA cli
+  // which doesn't install react and react-dom along with react-scripts.
+  if (!isReactInstalled(appPackage)) {
+    args.push('react', 'react-dom');
+    needInstall = true
+  }
 
   // Install additional template dependencies, if present
   const templateDependenciesPath = path.join(
@@ -108,19 +115,18 @@ module.exports = function(
   );
   if (fs.existsSync(templateDependenciesPath)) {
     const templateDependencies = require(templateDependenciesPath).dependencies;
-    args = args.concat(
-      Object.keys(templateDependencies).map(key => {
-        return `${key}@${templateDependencies[key]}`;
-      })
-    );
+    const dependencies = Object.keys(templateDependencies).map(key => {
+      return `${key}@${templateDependencies[key]}`;
+    })
+    if (dependencies.length > 0) {
+      needInstall = true
+    }
+    args = args.concat(dependencies);
     fs.unlinkSync(templateDependenciesPath);
   }
 
-  // Install react and react-dom for backward compatibility with old CRA cli
-  // which doesn't install react and react-dom along with react-scripts
-  // or template is presetend (via --internal-testing-template)
-  if (!isReactInstalled(appPackage) || template) {
-    console.log(`Installing react and react-dom using ${command}...`);
+  if (needInstall) {
+    console.log(`Installing dependencies using ${command}...`);
     console.log();
 
     const proc = spawn.sync(command, args, { stdio: 'inherit' });
