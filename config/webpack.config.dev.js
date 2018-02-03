@@ -204,6 +204,32 @@ module.exports = {
               cacheDirectory: true,
             },
           },
+          // Transform SVG to React components.
+          {
+            test: /\.svg$/,
+            include: paths.appSrc,
+            use: [
+              {
+                loader: require.resolve('babel-loader'),
+                options: {
+                  // @remove-on-eject-begin
+                  babelrc: false,
+                  presets: [require.resolve('babel-preset-react-app')],
+                  // @remove-on-eject-end
+                  compact: true,
+                },
+              },
+              {
+                loader: require.resolve('svgr/webpack'),
+                options: {
+                  replaceAttrValues: [
+                    ['#000', 'currentColor'],
+                    ['#000000', 'currentColor'],
+                  ],
+                },
+              },
+            ],
+          },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
           // "style" loader turns CSS into JS modules that inject <style> tags.
