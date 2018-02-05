@@ -1,25 +1,35 @@
 import React from 'react'
 
-import { ThemeProvider, Typeset } from 'former-kit'
+import {
+  ThemeProvider,
+  Typeset,
+  Layout,
+  Header,
+} from 'former-kit'
 import defaultTheme from 'former-kit-skin-pagarme'
 
-import logo from './logo.svg'
-import style from './App.css'
+import Sidebar from './containers/Sidebar'
+import Header from './containers/Header'
+import Footer from './containers/Footer'
+import Home from './pages/Home'
 
-const App = () => (
-  <ThemeProvider theme={defaultTheme}>
-    <Typeset>
-      <div className={style.app}>
-        <header className={style.header}>
-          <img src={logo} className={style.logo} alt="logo" />
-          <h1 className={style.title}>Welcome to React</h1>
-        </header>
-        <p className={style.intro}>
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    </Typeset>
-  </ThemeProvider>
-)
+class App extends React.Component {
+
+  render () {
+    return (
+      <ThemeProvider theme={defaultTheme}>
+        <Typeset>
+          <Layout
+            sidebar={<Sidebar />}
+            header={<Header />}
+            footer={<Footer />}
+          >
+            <Home />
+          </Layout>
+        </Typeset>
+      </ThemeProvider>
+    )
+  }
+}
 
 export default App
