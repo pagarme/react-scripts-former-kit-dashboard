@@ -207,7 +207,6 @@ module.exports = {
           // Transform SVG to React components.
           {
             test: /\.svg$/,
-            include: paths.appSrc,
             use: [
               {
                 loader: require.resolve('babel-loader'),
@@ -264,7 +263,7 @@ module.exports = {
                 options: {
                   importLoaders: 1,
                   modules: true,
-                  localIdentName: '[name]--[local]',
+                  localIdentName: '[path]--[local]',
                 },
               },
               {

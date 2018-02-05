@@ -1,7 +1,8 @@
 import React from 'react'
 
-import Alert24 from 'emblematic-icons/svg/Alert24'
-import Mail24 from 'emblematic-icons/svg/Mail24'
+import Alert24 from 'emblematic-icons/svg/Alert24.svg'
+import Mail24 from 'emblematic-icons/svg/Mail24.svg'
+import User24 from 'emblematic-icons/svg/User24.svg'
 
 import {
   Avatar,
@@ -12,12 +13,6 @@ import {
   HeaderTitle,
 } from 'former-kit'
 
-import {
-  HeaderContent,
-  HeaderLink,
-  HeaderMenu,
-} from '../../src/Header'
-
 const HeaderContainer = () => (
   <Header>
     <HeaderTitle>Transactions</HeaderTitle>
@@ -27,7 +22,7 @@ const HeaderContainer = () => (
       <HeaderMenu>
         <Avatar
           photo="https://randomuser.me/api/portraits/thumb/men/12.jpg"
-          icon={<FaUser size={24} />}
+          icon={<User24 />}
         />
         <span>User Name</span>
       </HeaderMenu>

@@ -1,7 +1,8 @@
 {
   "dependencies": {
+    "normalize.css": "7.0.0",
     "emblematic-icons": "^0.1.1",
-    "former-kit": "^0.0.9",
+    "former-kit": "^0.0.10",
     "former-kit-skin-pagarme": "^0.0.7"
   }
 }

@@ -333,7 +333,7 @@ module.exports = {
                         minimize: true,
                         sourceMap: shouldUseSourceMap,
                         modules: true,
-                        localIdentName: '[name]--[local]--[hash:8]',
+                        localIdentName: '[local]--[hash:8]',
                       },
                     },
                     {

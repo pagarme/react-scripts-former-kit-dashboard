@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Camera24 from 'emblematic-icons/svg/Camera24'
-import Card24 from 'emblematic-icons/svg/Card24'
+import Camera24 from 'emblematic-icons/svg/Camera24.svg'
+import Card24 from 'emblematic-icons/svg/Card24.svg'
 
-import Footer from '../../src/Footer'
+import { Footer } from 'former-kit'
 
 const links = [
   {
@@ -19,8 +19,8 @@ const links = [
 
 const FooterContainer = () => (
   <Footer links={links}>
-    <button> action('clicked')}><Camera24 /></button>
-    <button> action('clicked')}><Card24 /></button>
+    <button><Camera24 /></button>
+    <button><Card24 /></button>
   </Footer>
 )
 

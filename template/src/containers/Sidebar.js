@@ -6,11 +6,11 @@ import {
   SidebarLinks,
   SidebarLink,
 } from 'former-kit'
-import defaultTheme from 'former-kit-skin-pagarme'
 
-import Menu32 from 'emblematic-icons/svg/Menu32'
-import Transaction32 from 'emblematic-icons/svg/Transaction32'
-import Money32 from 'emblematic-icons/svg/Money32'
+import Menu32 from 'emblematic-icons/svg/Menu32.svg'
+import Transaction32 from 'emblematic-icons/svg/Transaction32.svg'
+import Wallet32 from 'emblematic-icons/svg/Wallet32.svg'
+import Home32 from 'emblematic-icons/svg/Home32.svg'
 
 export default class SidebarContainer extends React.Component {
   constructor (props) {
@@ -23,6 +23,7 @@ export default class SidebarContainer extends React.Component {
   }
 
   handleToggleSidebar () {
+    const { collapsed } = this.state
     this.setState({ collapsed: !collapsed })
   }
 
@@ -56,7 +57,7 @@ export default class SidebarContainer extends React.Component {
           <SidebarLink
             title="Extract"
             active={false}
-            icon={<Money32 width={16} height={16} />}
+            icon={<Wallet32 width={16} height={16} />}
             collapsed={collapsed}
           />
         </SidebarLinks>
