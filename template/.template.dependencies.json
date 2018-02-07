@@ -1,8 +1,10 @@
 {
   "dependencies": {
+    "classnames": "2.2.5",
     "normalize.css": "7.0.0",
     "emblematic-icons": "^0.1.1",
-    "former-kit": "^0.0.10",
-    "former-kit-skin-pagarme": "^0.0.7"
+    "former-kit": "^0.0.11",
+    "former-kit-skin-pagarme": "^0.0.8",
+    "react-router-dom": "4.2.2"
   }
 }
