@@ -1,73 +1,70 @@
-/* eslint-disable */
-
 import React, { PureComponent } from 'react'
-import {
-  Button,
-  Input,
-} from 'former-kit'
+import PropTypes from 'prop-types'
 
 import { withRouter } from 'react-router-dom'
+import { translate } from 'react-i18next'
+
+import { compose } from 'ramda'
 
 import Login from '../containers/Login'
+
+const enhanced = compose(
+  translate(),
+  withRouter
+)
 
 class LoginPage extends PureComponent {
   constructor (props) {
     super(props)
-    this.state = {
-      email: '',
-      password: '',
-      token: '',
-      emailError: null,
-      passwordError: null,
-      tokenError: '',
-      hasToken: !!(props.hasToken),
-    }
-    this.clearState = this.clearState.bind(this)
-    this.handleEmailChange = this.handleEmailChange.bind(this)
-    this.handleLogIn = this.handleLogIn.bind(this)
-    this.handlePasswordChange = this.handlePasswordChange.bind(this)
-    this.handleTokenChange = this.handleTokenChange.bind(this)
+    this.handleLogin = this.handleLogin.bind(this)
+    this.handleResetPassword = this.handleResetPassword.bind(this)
+    this.handleSignup = this.handleSignup.bind(this)
+    this.handleLanguageChange = this.handleLanguageChange.bind(this)
   }
 
-  clearState () {
-    this.setState({
-      email: '',
-      password: '',
-      token: '',
-      emailError: null,
-      passwordError: null,
-    })
+  handleLanguageChange (lang) {
+    this.props.i18n.changeLanguage(lang)
   }
 
-  handleLogIn (event) {
-    event.preventDefault()
+  handleLogin () {
     this.props.history.replace('/home')
-    this.clearState()
   }
 
-  handleEmailChange (event) {
-    this.setState({ email: event.target.value })
+  handleResetPassword () {
+    this.props.history.push('/reset_password')
   }
 
-  handlePasswordChange (event) {
-    this.setState({ password: event.target.value })
-  }
-
-  handleTokenChange (event) {
-    this.setState({ token: event.target.value })
+  handleSignup () {
+    this.props.history.push('/signup')
   }
 
   render () {
     return (
       <Login
-        {...this.state}
-        handleLogIn={this.handleLogIn}
-        handleEmailChange={this.handleEmailChange}
-        handlePasswordChange={this.handlePasswordChange}
-        handleTokenChange={this.handleTokenChange}
+        t={this.props.t}
+        history={this.props.history}
+        availableLanguages={['en-US', 'pt']}
+        selectedLanguage={this.props.i18n.language}
+        onLanguageChange={this.handleLanguageChange}
+        onLogin={this.handleLogin}
+        onResetPassword={this.handleResetPassword}
+        onSignup={this.handleSignup}
       />
     )
   }
 }
 
-export default withRouter(LoginPage)
+LoginPage.propTypes = {
+  t: PropTypes.func.isRequired,
+  i18n: PropTypes.shape({
+    changeLanguage: PropTypes.func,
+    language: PropTypes.string,
+    languages: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+    replace: PropTypes.func,
+  }).isRequired,
+}
+
+export default enhanced(LoginPage)

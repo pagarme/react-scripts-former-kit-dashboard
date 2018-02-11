@@ -1,0 +1,18 @@
+{
+  "landing": {
+    "logo": "FormerKit",
+    "title": "bem vindo",
+    "subtitle": "a Dashboard do FormerKit",
+    "body": "O FormerKit pode ser quase comparado a outras bibliotecas de UI por aí, mas não exatamente. A filosofia por trás do FormerKit é ser uma biblioteca de componentes React white-label através do desacoplamento dos estilos da estrutura do HTML, permitindo interfaces de usuário altamente customizáveis sem as complicações de construir sempre a mesma estrutura HTML e abstração de componentes React.",
+    "login_call": "use o formulário para entrar em sua conta",
+    "signup_call": "não tem uma conta?",
+    "signup_action": "registre-se"
+  },
+  "login": {
+    "email": "E-mail",
+    "password": "Senha",
+    "token": "Token",
+    "login_action": "Acessar",
+    "reset_password_action": "Recuperar senha"
+  }
+}

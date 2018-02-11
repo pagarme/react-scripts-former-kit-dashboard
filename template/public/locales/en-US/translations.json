@@ -1,0 +1,18 @@
+{
+  "landing": {
+    "logo": "FormerKit",
+    "title": "welcome",
+    "subtitle": "to FormerKit Dashboard",
+    "body": "FormerKit can be mostly compared to other UI libraries out there, but not exactly.\nThe philosophy behind FormerKit is to build a white-label React component library by decoupling styles from component's HTML structure, allowing higly customizable user interfaces without the hurdle to build everytime the same HTML structure and React component interface abstractions.",
+    "login_call": "use the form to access your account",
+    "signup_call": "doesn't have an account?",
+    "signup_action": "sign up"
+  },
+  "login": {
+    "email": "E-mail",
+    "password": "Password",
+    "token": "Token",
+    "login_action": "Login",
+    "reset_password_action": "Reset password"
+  }
+}

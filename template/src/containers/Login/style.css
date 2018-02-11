@@ -20,6 +20,10 @@
   }
 }
 
+.languageSwitcher {
+  padding-top: 8px;
+}
+
 .content {
   flex: 1;
   color: #a0a0a0;
