@@ -2,7 +2,6 @@ import React from 'react'
 
 import {
   ThemeProvider,
-  Typeset,
 } from 'former-kit'
 import theme from 'former-kit-skin-pagarme'
 
@@ -18,19 +17,15 @@ import LoggedArea from './pages/LoggedArea'
 const App = () => (
   <ThemeProvider theme={theme}>
     <HashRouter>
-      <Typeset>
-        <div>
-          <Switch>
-            <Route
-              path="/login"
-              component={Login}
-            />
-            <Route
-              component={LoggedArea}
-            />
-          </Switch>
-        </div>
-      </Typeset>
+      <Switch>
+        <Route
+          path="/login"
+          component={Login}
+        />
+        <Route
+          component={LoggedArea}
+        />
+      </Switch>
     </HashRouter>
   </ThemeProvider>
 )
