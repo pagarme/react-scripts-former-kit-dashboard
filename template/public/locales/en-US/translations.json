@@ -9,10 +9,31 @@
     "signup_action": "sign up"
   },
   "login": {
-    "email": "E-mail",
-    "password": "Password",
     "token": "Token",
     "login_action": "Login",
-    "reset_password_action": "Reset password"
-  }
+    "password_recovery_action": "Forgot your password?"
+  },
+  "password_recovery": {
+    "confirmation": "in a moment you will receive an email with instructions for resetting your password",
+    "confirmation_emphasis": "Done",
+    "recovery_call": "Enter the registered email to retrieve your password",
+    "recovery_action": "send"
+  },
+  "sign_up": {
+    "back_signup_action": "Back to sign up",
+    "company": "Company",
+    "confirmation": "You will receive an email with the instructions for activating your account",
+    "confirmation_emphasis": "done!",
+    "invalid_email_emphasis": "invalid registration email.",
+    "invalid_email_error": "for more information, contact your account administrator.",
+    "login_action": "login",
+    "login_call": "already have a registration ?",
+    "name": "Name",
+    "sign_up_action": "Sign up",
+    "subtitle": "on the Dashboard FormerKit",
+    "title": "create your account"
+  },
+  "email": "E-mail",
+  "password": "Password",
+  "back_login_action": "Back to login"
 }

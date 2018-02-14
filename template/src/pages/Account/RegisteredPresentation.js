@@ -1,23 +1,18 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-
 import { withRouter } from 'react-router-dom'
 import { translate } from 'react-i18next'
-
 import { compose } from 'ramda'
-
-import Login from '../containers/Login'
+import RegisteredPresentation from '../../containers/Account/RegisteredPresentation'
 
 const enhanced = compose(
   translate(),
   withRouter
 )
 
-class LoginPage extends PureComponent {
+class RegisteredPresentationPage extends PureComponent {
   constructor (props) {
     super(props)
-    this.handleLogin = this.handleLogin.bind(this)
-    this.handleResetPassword = this.handleResetPassword.bind(this)
     this.handleSignup = this.handleSignup.bind(this)
     this.handleLanguageChange = this.handleLanguageChange.bind(this)
   }
@@ -26,35 +21,24 @@ class LoginPage extends PureComponent {
     this.props.i18n.changeLanguage(lang)
   }
 
-  handleLogin () {
-    this.props.history.replace('/home')
-  }
-
-  handleResetPassword () {
-    this.props.history.push('/reset_password')
-  }
-
   handleSignup () {
-    this.props.history.push('/signup')
+    this.props.history.push('/account/signup')
   }
 
   render () {
     return (
-      <Login
-        t={this.props.t}
-        history={this.props.history}
+      <RegisteredPresentation
+        onGotoSignup={this.handleSignup}
         availableLanguages={['en-US', 'pt']}
         selectedLanguage={this.props.i18n.language}
         onLanguageChange={this.handleLanguageChange}
-        onLogin={this.handleLogin}
-        onResetPassword={this.handleResetPassword}
-        onSignup={this.handleSignup}
+        t={this.props.t}
       />
     )
   }
 }
 
-LoginPage.propTypes = {
+RegisteredPresentationPage.propTypes = {
   t: PropTypes.func.isRequired,
   i18n: PropTypes.shape({
     changeLanguage: PropTypes.func,
@@ -67,4 +51,4 @@ LoginPage.propTypes = {
   }).isRequired,
 }
 
-export default enhanced(LoginPage)
+export default enhanced(RegisteredPresentationPage)

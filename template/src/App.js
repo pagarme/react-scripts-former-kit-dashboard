@@ -1,17 +1,15 @@
 import React from 'react'
-
 import {
   ThemeProvider,
 } from 'former-kit'
 import theme from 'former-kit-skin-pagarme'
-
 import {
   HashRouter,
   Route,
   Switch,
 } from 'react-router-dom'
 
-import Login from './pages/Login'
+import Account from './pages/Account'
 import LoggedArea from './pages/LoggedArea'
 
 const App = () => (
@@ -19,8 +17,8 @@ const App = () => (
     <HashRouter>
       <Switch>
         <Route
-          path="/login"
-          component={Login}
+          path="/account"
+          component={Account}
         />
         <Route
           component={LoggedArea}

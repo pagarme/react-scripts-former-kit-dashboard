@@ -1,18 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import Form from 'react-vanilla-form'
-
 import {
   Button,
   FormInput,
 } from 'former-kit'
 
-import styles from './style.css'
+import styles from '../style.css'
 
-const LoginForm = ({
+const LoginContainer = ({
   onLogin,
-  onResetPassword,
+  onPasswordRecovery,
   t,
 }) => (
   <Form
@@ -22,7 +20,7 @@ const LoginForm = ({
       token: '',
     }}
     onSubmit={onLogin}
-    className={styles.form}
+    className={styles.primaryContent}
   >
     <div className={styles.logo}>
       <img
@@ -32,21 +30,20 @@ const LoginForm = ({
     </div>
     <div className={styles.login}>
       <FormInput
-        label={t('login.email')}
+        label={t('email')}
         name="email"
       />
       <FormInput
         type="password"
-        label={t('login.password')}
+        label={t('password')}
         name="password"
       />
       <FormInput
         label={t('login.token')}
         name="token"
-        placeholder="ABC123"
       />
     </div>
-    <div className={styles.loginActions}>
+    <div className={styles.actions}>
       <div className={styles.hugeButton}>
         <Button
           type="submit"
@@ -56,17 +53,17 @@ const LoginForm = ({
           {t('login.login_action')}
         </Button>
       </div>
-      <button role="link" onClick={onResetPassword}>
-        {t('login.reset_password_action')}
+      <button role="link" onClick={onPasswordRecovery}>
+        {t('login.password_recovery_action')}
       </button>
     </div>
   </Form>
 )
 
-LoginForm.propTypes = {
+LoginContainer.propTypes = {
   onLogin: PropTypes.func.isRequired,
-  onResetPassword: PropTypes.func.isRequired,
+  onPasswordRecovery: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
 }
 
-export default LoginForm
+export default LoginContainer
