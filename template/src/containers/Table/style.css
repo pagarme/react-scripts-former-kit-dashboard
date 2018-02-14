@@ -1,0 +1,24 @@
+.capitalize {
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+}
+
+.centralizedItem {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.buttons {
+  margin-bottom: 16px;
+  display: flex;
+
+  & > *:not(:first-child) {
+    margin-left: 16px;
+  }
+
+  & > span {
+    display: block;
+    flex: 1;
+  }
+}
