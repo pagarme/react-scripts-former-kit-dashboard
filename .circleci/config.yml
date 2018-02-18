@@ -1,0 +1,31 @@
+version: 2
+image: ubuntu:16.04
+jobs:
+  build:
+    docker:
+      - image: node:8.9-alpine
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run: |
+          apk add --no-cache ca-certificates
+
+      - restore_cache:
+          keys:
+          - yarn-cache
+
+      - run: |
+          yarn global add create-react-app
+          create-react-app --scripts-version file:/$(pwd) testapp
+          cd testapp
+          npm run test
+          npm run build
+
+      - save_cache:
+          paths:
+            - ~/.yarn-cache
+          key: yarn-cache
+
