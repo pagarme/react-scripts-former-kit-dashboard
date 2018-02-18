@@ -26,7 +26,7 @@ const CardExample = () => (
   </Card>
 )
 
-const Home = () => (
+const Forms = () => (
   <Grid>
     <Row flex>
       <Col tablet={12} palm={12}><CardExample /></Col>
@@ -53,4 +53,4 @@ const Home = () => (
   </Grid>
 )
 
-export default Home
+export default Forms
