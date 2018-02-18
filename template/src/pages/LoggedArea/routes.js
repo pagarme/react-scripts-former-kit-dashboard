@@ -1,7 +1,7 @@
 import ChartBars32 from 'emblematic-icons/svg/ChartBars32.svg'
 import Wallet32 from 'emblematic-icons/svg/Wallet32.svg'
 import Home32 from 'emblematic-icons/svg/Home32.svg'
-import Report32 from 'emblematic-icons/svg/Repport32.svg'
+import Report32 from 'emblematic-icons/svg/Report32.svg'
 
 import Home from '../Home'
 import Charts from '../Charts'
