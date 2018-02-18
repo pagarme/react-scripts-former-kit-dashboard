@@ -213,7 +213,13 @@ inquirer
     // Add ESlint config
     console.log(`  Adding ${cyan('ESLint')} configuration`);
     appPackage.eslintConfig = {
-      extends: 'react-app',
+      extends: 'pagarme-react',
+    };
+
+    // Add stylelint config
+    console.log(`  Adding ${cyan('stylelint')} configuration`);
+    appPackage.stylelint = {
+      extends: 'stylelint-config-pagarme-react',
     };
 
     fs.writeFileSync(
