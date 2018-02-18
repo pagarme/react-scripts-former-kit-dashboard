@@ -159,17 +159,8 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: cssModulesIgnores,
         enforce: 'pre',
         use: [
-          require.resolve('style-loader'),
-          {
-            loader: require.resolve('css-loader'),
-            options: {
-              importLoaders: 1,
-              modules: true,
-            },
-          },
           {
             loader: require.resolve('postcss-loader'),
             options: {
@@ -182,30 +173,6 @@ module.exports = {
                   },
                   // @remove-on-eject-end
                 }),
-                ...postCSSLoaderOptions.plugins(),
-              ],
-            },
-          },
-        ],
-        include: paths.appSrc,
-      },
-      {
-        test: cssModulesIgnores,
-        enforce: 'pre',
-        use: [
-          require.resolve('style-loader'),
-          {
-            loader: require.resolve('css-loader'),
-            options: {
-              importLoaders: 1,
-            },
-          },
-          {
-            loader: require.resolve('postcss-loader'),
-            options: {
-              ...postCSSLoaderOptions,
-              plugins: () => [
-                require('stylelint'),
                 ...postCSSLoaderOptions.plugins(),
               ],
             },
@@ -244,7 +211,6 @@ module.exports = {
           // Transform SVG to React components.
           {
             test: /\.svg$/,
-            include: paths.appSrc,
             use: [
               {
                 loader: require.resolve('babel-loader'),
