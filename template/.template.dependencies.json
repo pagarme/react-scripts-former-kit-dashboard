@@ -2,8 +2,8 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "emblematic-icons": "^0.1.1",
-    "former-kit": "^0.0.12",
-    "former-kit-skin-pagarme": "^0.0.10",
+    "former-kit": "^0.0.13",
+    "former-kit-skin-pagarme": "^0.0.13",
     "i18next": "10.3.0",
     "i18next-browser-languagedetector": "2.1.0",
     "i18next-xhr-backend": "1.5.1",
