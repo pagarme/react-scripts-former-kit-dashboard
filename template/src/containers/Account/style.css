@@ -1,3 +1,8 @@
+
+.languageSwitcher {
+  padding-top: 8px;
+}
+
 .container {
   height: calc(100vh - 16px);
   background-color: #f9f9f9;
@@ -20,24 +25,20 @@
   }
 }
 
-.languageSwitcher {
-  padding-top: 8px;
-}
-
-.content {
+.secondaryContent {
   flex: 1;
   color: #a0a0a0;
   justify-content: flex-start;
 }
 
-.form {
+.primaryContent {
   color: #ffffff;
   justify-content: space-around;
   flex: 1;
 }
 
-.content,
-.form {
+.secondaryContent,
+.primaryContent {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -69,21 +70,24 @@
   line-height: 1.7;
 }
 
-.dark,
-.dark div {
-  background-color: #2c2c2c;
-  box-shadow: none;
+.login .paragraph {
+  text-transform: uppercase;
 }
 
 .logo {
   width: 100%;
 }
 
-.login {
+.login,
+.signIn {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  & .paragraph {
+    text-transform: uppercase;
+  }
 }
 
 .hugeButton,
@@ -92,9 +96,10 @@
   width: 100%;
   font-size: 16px;
   height: 44px;
+  color: #ffffff;
 }
 
-.loginActions {
+.actions {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -104,26 +109,27 @@
   padding-top: 45px;
 }
 
-.form .loginActions {
+.primaryContent .actions button[role="link"] {
+  padding: 10px 0;
+  text-transform: uppercase;
+  color: #757575;
+  font-size: 12px;
 
-  & > a {
-    padding: 10px 0;
-    text-transform: uppercase;
-    color: #757575;
-    font-size: 12px;
-  }
-
-  & > a:hover,
-  & > a:active {
+  &:hover,
+  &:focus {
     color: #bababa;
   }
 }
 
-.form .login {
+.primaryContent .login,
+.primaryContent .signIn {
 
   & > div {
     padding-top: 45px;
   }
+}
+
+.primaryContent .login {
 
   & input:focus ~ label,
   & input:hover,
@@ -139,7 +145,7 @@
   }
 }
 
-.signIn {
+.signInBlock {
   padding-bottom: 16px;
 
   & span {
@@ -161,4 +167,12 @@
   &:visited {
     color: #2b9e77;
   }
+}
+
+.confirmation .actions {
+  padding-bottom: 35px;
+}
+
+.confirmationContent {
+  padding-bottom: 33px;
 }

@@ -8,14 +8,14 @@ import {
 
 import styles from './style.css'
 
-const LoginPromo = ({
-  onSignup,
+const RegisteredPresentationContainer = ({
+  onGotoSignup,
   onLanguageChange,
   selectedLanguage,
   availableLanguages,
   t,
 }) => (
-  <div className={styles.content}>
+  <div className={styles.secondaryContent}>
     <div>
       <h1 className={styles.title}>
         {t('landing.title')}
@@ -35,14 +35,14 @@ const LoginPromo = ({
     <p className={styles.paragraph}>
       {t('landing.body')}
     </p>
-    <div className={classNames(styles.uppercase, styles.signIn)}>
+    <div className={classNames(styles.uppercase, styles.signInBlock)}>
       <p>
         <span>{t('landing.login_call')}</span>
         <span>
           {t('landing.signup_call')}
           <button
             role="link"
-            onClick={onSignup}
+            onClick={onGotoSignup}
             className={styles.signInLink}
           >
             {t('landing.signup_action')}
@@ -53,12 +53,12 @@ const LoginPromo = ({
   </div>
 )
 
-LoginPromo.propTypes = {
-  onSignup: PropTypes.func.isRequired,
+RegisteredPresentationContainer.propTypes = {
+  onGotoSignup: PropTypes.func.isRequired,
   onLanguageChange: PropTypes.func.isRequired,
   selectedLanguage: PropTypes.string.isRequired,
   availableLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
   t: PropTypes.func.isRequired,
 }
 
-export default LoginPromo
+export default RegisteredPresentationContainer

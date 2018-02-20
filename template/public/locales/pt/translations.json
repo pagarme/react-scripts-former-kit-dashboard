@@ -9,10 +9,31 @@
     "signup_action": "registre-se"
   },
   "login": {
-    "email": "E-mail",
-    "password": "Senha",
     "token": "Token",
     "login_action": "Acessar",
-    "reset_password_action": "Recuperar senha"
-  }
+    "password_recovery_action": "Redefinir senha"
+  },
+  "password_recovery": {
+    "confirmation": "em instantes você receberá um e-mail com as instruções para a redefinição de sua senha",
+    "confirmation_emphasis": "pronto",
+    "recovery_call": "Digite o e-mail cadastrado para recuperar sua senha",
+    "recovery_action": "enviar"
+  },
+  "sign_up": {
+    "back_signup_action": "Voltar para o cadastro",
+    "company": "Empresa",
+    "confirmation": "você receberá um e-mail com as instruções para a ativação de sua conta",
+    "confirmation_emphasis": "pronto!",
+    "invalid_email_emphasis": "e-mail de cadastro inválido.",
+    "invalid_email_error": "Para mais informações entre em contato com o administrador da sua conta.",
+    "login_action": "faça login",
+    "login_call": "já possui cadastro ?",
+    "name": "Nome completo",
+    "sign_up_action": "Cadastrar",
+    "subtitle": "na dashboard FormerKit",
+    "title": "crie sua conta"
+  },
+  "email": "E-mail",
+  "password": "Senha",
+  "back_login_action": "Voltar para o login"
 }
