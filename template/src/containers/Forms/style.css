@@ -1,0 +1,7 @@
+.form > *:not(:first-child) {
+  margin: 10px 0 0;
+}
+
+.column > *:not(:first-child) {
+  margin-top: 24px;
+}
