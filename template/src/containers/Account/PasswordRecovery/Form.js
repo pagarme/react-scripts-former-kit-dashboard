@@ -20,12 +20,6 @@ const PasswordRecoveryForm = ({
     onSubmit={onSubmit}
     className={styles.primaryContent}
   >
-    <div className={styles.logo}>
-      <img
-        src=""
-        alt={t('landing.logo')}
-      />
-    </div>
     <div className={styles.login}>
       <p className={styles.paragraph}>
         {t('password_recovery.recovery_call')}

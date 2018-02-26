@@ -10,12 +10,6 @@ const Confirmation = ({
   t,
 }) => (
   <div className={classNames(styles.primaryContent, styles.confirmationContent)}>
-    <div className={styles.logo}>
-      <img
-        src=""
-        alt={t('landing.logo')}
-      />
-    </div>
     <div className={styles.login}>
       <p className={styles.paragraph}>
         <b>{t('password_recovery.confirmation_emphasis')}</b>
