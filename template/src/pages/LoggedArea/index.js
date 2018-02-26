@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {
+  Redirect,
   Route,
   Switch,
   withRouter,
@@ -24,6 +25,7 @@ const LoggedArea = () => (
       {Object.values(routes).map(({ component, path }) => (
         <Route path={path} component={component} />
       ))}
+      <Redirect to="/home" />
     </Switch>
   </Layout>
 )

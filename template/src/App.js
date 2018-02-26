@@ -5,26 +5,22 @@ import {
 import theme from 'former-kit-skin-pagarme'
 import {
   HashRouter,
-  Route,
-  Switch,
 } from 'react-router-dom'
 
-import Account from './pages/Account'
-import LoggedArea from './pages/LoggedArea'
+import { Provider as StateProvider } from 'react-redux'
+
+import configureStore from './configureStore'
+import Root from './pages/Root'
+
+const store = configureStore()
 
 const App = () => (
   <ThemeProvider theme={theme}>
-    <HashRouter>
-      <Switch>
-        <Route
-          path="/account"
-          component={Account}
-        />
-        <Route
-          component={LoggedArea}
-        />
-      </Switch>
-    </HashRouter>
+    <StateProvider store={store}>
+      <HashRouter>
+        <Root />
+      </HashRouter>
+    </StateProvider>
   </ThemeProvider>
 )
 

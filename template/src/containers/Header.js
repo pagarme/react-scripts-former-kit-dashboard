@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Alert24 from 'emblematic-icons/svg/Alert24.svg'
 import Mail24 from 'emblematic-icons/svg/Mail24.svg'
@@ -13,7 +14,7 @@ import {
   HeaderTitle,
 } from 'former-kit'
 
-const HeaderContainer = () => (
+const HeaderContainer = ({ avatar, username }) => (
   <Header>
     <HeaderTitle>Transactions</HeaderTitle>
     <HeaderContent>
@@ -21,13 +22,18 @@ const HeaderContainer = () => (
       <HeaderLink icon={<Alert24 />} />
       <HeaderMenu>
         <Avatar
-          photo="https://randomuser.me/api/portraits/thumb/men/12.jpg"
+          photo={avatar}
           icon={<User24 />}
         />
-        <span>User Name</span>
+        <span>{username}</span>
       </HeaderMenu>
     </HeaderContent>
   </Header>
 )
+
+HeaderContainer.propTypes = {
+  avatar: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+}
 
 export default HeaderContainer

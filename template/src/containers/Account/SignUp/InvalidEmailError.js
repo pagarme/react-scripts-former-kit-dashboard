@@ -10,12 +10,6 @@ const InvalidEmailError = ({
   t,
 }) => (
   <div className={classNames(styles.primaryContent, styles.confirmationContent)}>
-    <div className={styles.logo}>
-      <img
-        src=""
-        alt={t('landing.logo')}
-      />
-    </div>
     <div className={styles.login}>
       <p className={styles.paragraph}>
         <b>{t('sign_up.invalid_email_emphasis')}</b>

@@ -1,16 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import {
   Route,
   Switch,
   withRouter,
 } from 'react-router-dom'
+
 import {
+  compose,
   always,
   anyPass,
   contains,
   ifElse,
 } from 'ramda'
+
+import { translate } from 'react-i18next'
+
 import Account from '../../containers/Account'
 import UnregisteredPresentation from './UnregisteredPresentation'
 import InvalidEmailError from './SignUp/InvalidEmailError'
@@ -30,8 +36,20 @@ const getBaseByPath = ifElse(
   always('light')
 )
 
-const AccountArea = ({ history: { location } }) => (
+const enhance = compose(
+  withRouter,
+  translate()
+)
+
+const AccountArea = ({ t, history: { location } }) => (
   <Account
+    logo={props => (
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/e/e5/NASA_logo.svg"
+        alt={t('landing.logo')}
+        {...props}
+      />
+    )}
     base={getBaseByPath(location.pathname)}
     primaryContent={
       <Switch>
@@ -81,6 +99,7 @@ const AccountArea = ({ history: { location } }) => (
 )
 
 AccountArea.propTypes = {
+  t: PropTypes.func.isRequired,
   history: PropTypes.shape({
     location: PropTypes.shape({
       pathname: PropTypes.string,
@@ -88,4 +107,4 @@ AccountArea.propTypes = {
   }).isRequired,
 }
 
-export default withRouter(AccountArea)
+export default enhance(AccountArea)
