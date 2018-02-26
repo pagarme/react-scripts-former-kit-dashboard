@@ -11,6 +11,7 @@ import {
   contains,
   ifElse,
 } from 'ramda'
+
 import Account from '../../containers/Account'
 import UnregisteredPresentation from './UnregisteredPresentation'
 import InvalidEmailError from './SignUp/InvalidEmailError'

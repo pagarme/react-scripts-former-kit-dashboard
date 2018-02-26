@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Form from 'react-vanilla-form'
+
 import {
   Button,
   FormInput,
@@ -9,6 +10,8 @@ import {
 import styles from '../style.css'
 
 const LoginContainer = ({
+  errors,
+  loading,
   onLogin,
   onPasswordRecovery,
   t,
@@ -19,26 +22,25 @@ const LoginContainer = ({
       password: '',
       token: '',
     }}
+    errors={errors}
+    customErrorProp="error"
     onSubmit={onLogin}
     className={styles.primaryContent}
   >
-    <div className={styles.logo}>
-      <img
-        src=""
-        alt={t('landing.logo')}
-      />
-    </div>
     <div className={styles.login}>
       <FormInput
+        disabled={loading}
         label={t('email')}
         name="email"
       />
       <FormInput
+        disabled={loading}
         type="password"
         label={t('password')}
         name="password"
       />
       <FormInput
+        disabled={loading}
         label={t('login.token')}
         name="token"
       />
@@ -47,13 +49,18 @@ const LoginContainer = ({
       <div className={styles.hugeButton}>
         <Button
           type="submit"
+          disabled={loading}
           size="large"
           fill="gradient"
         >
           {t('login.login_action')}
         </Button>
       </div>
-      <button role="link" onClick={onPasswordRecovery}>
+      <button
+        role="link"
+        disabled={loading}
+        onClick={onPasswordRecovery}
+      >
         {t('login.password_recovery_action')}
       </button>
     </div>
@@ -61,9 +68,19 @@ const LoginContainer = ({
 )
 
 LoginContainer.propTypes = {
+  errors: PropTypes.shape({
+    email: PropTypes.string,
+    password: PropTypes.string,
+  }),
+  loading: PropTypes.bool,
   onLogin: PropTypes.func.isRequired,
   onPasswordRecovery: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
+}
+
+LoginContainer.defaultProps = {
+  errors: null,
+  loading: false,
 }
 
 export default LoginContainer

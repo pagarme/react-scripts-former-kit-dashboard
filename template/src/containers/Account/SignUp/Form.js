@@ -22,12 +22,6 @@ const SignUpForm = ({
     onSubmit={onSubmit}
     className={styles.primaryContent}
   >
-    <div className={styles.logo}>
-      <img
-        src=""
-        alt={t('landing.logo')}
-      />
-    </div>
     <div className={styles.signIn}>
       <FormInput
         label={t('sign_up.name')}
