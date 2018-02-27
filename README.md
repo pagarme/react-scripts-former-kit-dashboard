@@ -2,7 +2,7 @@
 
 This package includes scripts and configuration used by [Create React App](https://github.com/facebook/create-react-app). It's a fork from original [`react-scripts`](https://github.com/facebook/create-react-app) with template and configuration changes to give you the base for building dashboards very quickly.
 
-![FormerKit Dashboard GIF walkthrough](https://media.giphy.com/media/2wX0gGKvt4WURh4w3o/giphy.gif)
+![FormerKit Dashboard GIF walkthrough](https://media.giphy.com/media/9rnoHahCVjSlKOWcvo/giphy.gif)
 
 ## Using this template
 

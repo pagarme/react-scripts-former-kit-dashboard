@@ -44,11 +44,14 @@ const enhance = compose(
 const AccountArea = ({ t, history: { location } }) => (
   <Account
     logo={props => (
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/e/e5/NASA_logo.svg"
-        alt={t('landing.logo')}
-        {...props}
-      />
+      <a href="https://openclipart.org/detail/270878/datacubes">
+        <img
+          src="https://openclipart.org/download/270878/Datacubes.svg"
+          alt={t('landing.logo')}
+          height="160px"
+          {...props}
+        />
+      </a>
     )}
     base={getBaseByPath(location.pathname)}
     primaryContent={
