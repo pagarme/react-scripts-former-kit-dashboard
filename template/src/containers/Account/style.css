@@ -4,7 +4,7 @@
 }
 
 .container {
-  height: calc(100vh - 16px);
+  height: 100vh;
   background-color: #f9f9f9;
 }
 
