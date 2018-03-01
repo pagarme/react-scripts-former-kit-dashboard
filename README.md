@@ -19,11 +19,11 @@ npm install -g create-react-app
 create-react-app --scripts-version react-scripts-former-kit-dashboard myapp
 ```
 
-Check the bootstrapped project README file for more instructions on how to work on it. If you want to check it before bootstraping the project, check [here](https://github.com/pagarme/react-scripts-former-kit-dashboard/tree/master/template/README.md).
+Check the bootstrapped project README file for more instructions on how to work on it. If you want to check it before bootstrapping the project, check [here](https://github.com/pagarme/react-scripts-former-kit-dashboard/tree/master/template/README.md).
 
 ## What's included
 
-The template bootstrapped by this scripts should give you the base for building higly customizable dashboards very quickly using [FormerKit](https://github.com/pagarme/former-kit) as the React UI component library.
+The template bootstrapped by this scripts should give you the base for building highly customizable dashboards very quickly using [FormerKit](https://github.com/pagarme/former-kit) as the React UI component library.
 
 It has the following scaffold:
 
