@@ -40,7 +40,7 @@ function Root ({ token, location }) {
 Root.propTypes = {
   token: PropTypes.string,
   location: PropTypes.shape({
-    pathnae: PropTypes.string,
+    pathname: PropTypes.string,
   }),
 }
 
