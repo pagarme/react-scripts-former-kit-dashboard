@@ -47,7 +47,7 @@ We also hand-picked some libraries and tools to build the foundation so that you
 - [CSSNext](https://github.com/MoOx/postcss-cssnext) for CSS level 4 features, but today
 - [SVGR](https://github.com/smooth-code/svgr) for importing SVG as React components
 - [Recharts](https://github.com/recharts/recharts) for responsive SVG charts
-- [Vanilla Forms](https://github.com/derekstavis/react-vanilla-forms) for form state management and validation
+- [Vanilla Form](https://github.com/derekstavis/react-vanilla-form) for form state management and validation
 - [Redux](https://redux.js.org) for shared state management
 - [Redux Observable](https://redux-observable.js.org) for async actions
 - [Ducks Specification](https://github.com/erikras/ducks-modular-redux) for redux organization
