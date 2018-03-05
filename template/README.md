@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## What's included
 
-The template bootstrapped by this scripts should give you the base for building higly customizable dashboards very quickly using [FormerKit](https://github.com/pagarme/former-kit) as the React UI component library.
+The template bootstrapped by this scripts should give you the base for building highly customizable dashboards very quickly using [FormerKit](https://github.com/pagarme/former-kit) as the React UI component library.
 
 It has the following scaffold:
 
