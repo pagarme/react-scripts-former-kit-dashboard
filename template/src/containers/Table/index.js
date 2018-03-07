@@ -150,7 +150,7 @@ class TableContainer extends Component {
               <span />
               <Dropdown
                 options={[10, 20, 30, 40, 50].map(i =>
-                  ({ name: `${i} items per page`, value: i }))
+                  ({ name: `${i} items per page`, value: `${i}` }))
                 }
                 name="count"
                 value={this.state.selected}
