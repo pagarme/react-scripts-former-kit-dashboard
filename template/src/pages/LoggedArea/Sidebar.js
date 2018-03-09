@@ -48,6 +48,7 @@ class SidebarContainer extends React.Component {
         <SidebarLinks>
           {Object.values(routes).map(({ title, path, icon: Icon }) => (
             <SidebarLink
+              key={path}
               title={title}
               active={path === pathname}
               icon={<Icon width={16} height={16} />}

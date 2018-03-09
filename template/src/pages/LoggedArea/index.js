@@ -23,7 +23,7 @@ const LoggedArea = () => (
   >
     <Switch>
       {Object.values(routes).map(({ component, path }) => (
-        <Route path={path} component={component} />
+        <Route key={path} path={path} component={component} />
       ))}
       <Redirect to="/home" />
     </Switch>
