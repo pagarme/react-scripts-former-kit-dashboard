@@ -3,4 +3,4 @@
 // pipeline CSS modules files are processed, but with `modules: false`.
 module.exports = [
   /.*react-dates.*\.css/,
-];
+]
