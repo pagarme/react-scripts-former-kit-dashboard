@@ -2412,7 +2412,7 @@ eslint-config-airbnb@16.1.0:
   dependencies:
     eslint-config-airbnb-base "^12.1.0"
 
-eslint-config-pagarme-react@^1.2.0:
+eslint-config-pagarme-react@1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/eslint-config-pagarme-react/-/eslint-config-pagarme-react-1.4.0.tgz#0803d8066600e2201a7065342aa6e26975a41865"
   dependencies:
