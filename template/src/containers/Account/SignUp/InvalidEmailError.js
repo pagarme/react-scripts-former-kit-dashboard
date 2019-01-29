@@ -5,20 +5,18 @@ import { Button } from 'former-kit'
 
 import styles from '../style.css'
 
-const InvalidEmailError = ({
-  onBackToSignUp,
-  t,
-}) => (
-  <div className={classNames(styles.primaryContent, styles.confirmationContent)}>
+const InvalidEmailError = ({ onBackToSignUp, t }) => (
+  <div
+    className={classNames(styles.primaryContent, styles.confirmationContent)}
+  >
     <div className={styles.login}>
       <p className={styles.paragraph}>
-        <b>{t('sign_up.invalid_email_emphasis')}</b>
-        {' '}
+        <b>{t('sign_up.invalid_email_emphasis')}</b>{' '}
         <span>{t('sign_up.invalid_email_error')}</span>
       </p>
     </div>
     <div className={styles.actions}>
-      <div className={styles.hugeButton} >
+      <div className={styles.hugeButton}>
         <Button
           type="button"
           size="large"

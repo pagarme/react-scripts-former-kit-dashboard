@@ -1,18 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Form from 'react-vanilla-form'
-import {
-  Button,
-  FormInput,
-} from 'former-kit'
+import { Button, FormInput } from 'former-kit'
 
 import styles from '../style.css'
 
-const PasswordRecoveryForm = ({
-  onSubmit,
-  onBackToLogin,
-  t,
-}) => (
+const PasswordRecoveryForm = ({ onBackToLogin, onSubmit, t }) => (
   <Form
     data={{
       email: '',
@@ -21,21 +14,12 @@ const PasswordRecoveryForm = ({
     className={styles.primaryContent}
   >
     <div className={styles.login}>
-      <p className={styles.paragraph}>
-        {t('password_recovery.recovery_call')}
-      </p>
-      <FormInput
-        label={t('email')}
-        name="email"
-      />
+      <p className={styles.paragraph}>{t('password_recovery.recovery_call')}</p>
+      <FormInput label={t('email')} name="email" />
     </div>
     <div className={styles.actions}>
       <div className={styles.hugeButton}>
-        <Button
-          type="submit"
-          size="large"
-          fill="gradient"
-        >
+        <Button type="submit" size="large" fill="gradient">
           {t('password_recovery.recovery_action')}
         </Button>
       </div>

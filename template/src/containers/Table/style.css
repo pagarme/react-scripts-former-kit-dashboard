@@ -1,3 +1,5 @@
+@import "former-kit-skin-pagarme/dist/styles/spacing.css";
+
 .capitalize {
   text-transform: capitalize;
   display: flex;
@@ -9,16 +11,10 @@
   text-align: center;
 }
 
-.buttons {
-  margin-bottom: 16px;
-  display: flex;
+.buttons  > * {
+  margin-left: var(--spacing-small);
 
-  & > *:not(:first-child) {
-    margin-left: 16px;
-  }
-
-  & > span {
-    display: block;
-    flex: 1;
+  &:first-child {
+    margin-left: unset;
   }
 }

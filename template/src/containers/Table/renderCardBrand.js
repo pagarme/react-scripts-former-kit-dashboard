@@ -1,9 +1,6 @@
 import React from 'react'
 
-import {
-  cond,
-  equals,
-} from 'ramda'
+import { cond, equals } from 'ramda'
 
 import IconVisa from 'emblematic-icons/svg/VisaCard16.svg'
 import IconMaster from 'emblematic-icons/svg/MasterCard16.svg'
@@ -22,16 +19,13 @@ const renderBrandIcon = cond([
 ])
 
 const renderCardBrand = item => (
-  <div
-    className={style.centralizedItem}
-    title={item.card_brand}
-  >
-    {item.card_brand &&
+  <div className={style.centralizedItem} title={item.card_brand}>
+    {item.card_brand && (
       <span className={style.capitalize}>
         {renderBrandIcon(item.card_brand)}
         {item.card_brand}
       </span>
-    }
+    )}
   </div>
 )
 

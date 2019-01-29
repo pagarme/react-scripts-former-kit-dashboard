@@ -7,9 +7,7 @@ import {
   CardContent,
   CardTitle,
   CardActions,
-
   Button,
-
   FormInput,
   FormDropdown,
   RadioGroup,
@@ -18,7 +16,7 @@ import {
 import { required, isNumber } from './validations'
 import style from './style.css'
 
-class FormExample1 extends React.Component {
+class FormExample extends React.Component {
   constructor (props) {
     super(props)
     this.state = {}
@@ -36,15 +34,9 @@ class FormExample1 extends React.Component {
               projectCount: [required, isNumber],
             }}
           >
-            <CardTitle
-              title="Form input style"
-            />
+            <CardTitle title="Form input style" />
             <CardContent className={style.form}>
-              <FormInput
-                type="text"
-                name="name"
-                label="Name"
-              />
+              <FormInput type="text" name="name" label="Name" />
               <FormInput
                 type="number"
                 name="projectCount"
@@ -68,25 +60,21 @@ class FormExample1 extends React.Component {
           </Form>
         </Card>
         <Card>
-          <CardTitle
-            title="Form Data"
-          />
-          <CardContent>
-            {this.state.result &&
+          <CardTitle title="Form Data" />
+          {this.state.result &&
+            <CardContent>
               <pre>
-                <code>
-                  {JSON.stringify(this.state.result, null, 2)}
-                </code>
+                <code>{JSON.stringify(this.state.result, null, 2)}</code>
               </pre>
-            }
-          </CardContent>
+            </CardContent>
+          }
         </Card>
       </Fragment>
     )
   }
 }
 
-FormExample1.propTypes = {
+FormExample.propTypes = {
   companies: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     value: PropTypes.string,
@@ -97,4 +85,4 @@ FormExample1.propTypes = {
   })).isRequired,
 }
 
-export default FormExample1
+export default FormExample

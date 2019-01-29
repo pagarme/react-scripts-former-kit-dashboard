@@ -5,10 +5,7 @@ import { translate } from 'react-i18next'
 import { compose } from 'ramda'
 import { PasswordRecoveryForm } from '../../../containers/Account/PasswordRecovery'
 
-const enhanced = compose(
-  translate(),
-  withRouter
-)
+const enhanced = compose(translate(), withRouter)
 
 class PasswordRecoveryPage extends PureComponent {
   constructor (props) {
@@ -37,11 +34,11 @@ class PasswordRecoveryPage extends PureComponent {
 }
 
 PasswordRecoveryPage.propTypes = {
-  t: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
     replace: PropTypes.func,
   }).isRequired,
+  t: PropTypes.func.isRequired,
 }
 
 export default enhanced(PasswordRecoveryPage)

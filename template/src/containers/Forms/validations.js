@@ -1,10 +1,10 @@
 import { isNil } from 'ramda'
 
-const isNumber = value => (
-  (isNil(value) || value === '')
+const isNumber = value =>
+  (isNil(value) || value === ''
     ? 'Should be a number'
     : null
-)
+  )
 
 const minimumAge = (value) => {
   if (!isNil(value) && value !== '') {
@@ -16,14 +16,10 @@ const minimumAge = (value) => {
   return null
 }
 
-const required = value => (
-  (isNil(value) || value === '')
+const required = value =>
+  (isNil(value) || value === ''
     ? 'This field is required'
     : false
-)
+  )
 
-export {
-  isNumber,
-  minimumAge,
-  required,
-}
+export { isNumber, minimumAge, required }

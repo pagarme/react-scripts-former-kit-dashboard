@@ -1,3 +1,5 @@
+/* eslint-disable sort-keys */
+
 export default [
   {
     id: '3b8b0d73-c9f1-4357-909d-30618dd7d1bc',

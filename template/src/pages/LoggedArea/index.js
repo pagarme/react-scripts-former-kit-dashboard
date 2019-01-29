@@ -1,11 +1,6 @@
 import React from 'react'
 
-import {
-  Redirect,
-  Route,
-  Switch,
-  withRouter,
-} from 'react-router-dom'
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom'
 
 import { Layout } from 'former-kit'
 
@@ -16,14 +11,14 @@ import Footer from './Footer'
 import routes from './routes'
 
 const LoggedArea = () => (
-  <Layout
-    sidebar={<Sidebar />}
-    header={<Header />}
-    footer={<Footer />}
-  >
+  <Layout sidebar={<Sidebar />} header={<Header />} footer={<Footer />}>
     <Switch>
       {Object.values(routes).map(({ component, path }) => (
-        <Route key={path} path={path} component={component} />
+        <Route
+          component={component}
+          key={path}
+          path={path}
+        />
       ))}
       <Redirect to="/home" />
     </Switch>
