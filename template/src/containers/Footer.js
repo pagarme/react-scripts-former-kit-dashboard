@@ -19,8 +19,12 @@ const links = [
 
 const FooterContainer = () => (
   <Footer links={links}>
-    <button><Camera24 /></button>
-    <button><Card24 /></button>
+    <button>
+      <Camera24 />
+    </button>
+    <button>
+      <Card24 />
+    </button>
   </Footer>
 )
 

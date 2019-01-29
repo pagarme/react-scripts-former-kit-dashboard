@@ -5,5 +5,6 @@ import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 import './initializeI18n'
 
+// eslint-disable-next-line no-undef
 ReactDOM.render(<App />, document.getElementById('root'))
 registerServiceWorker()

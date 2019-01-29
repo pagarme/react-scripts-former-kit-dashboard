@@ -1,17 +1,12 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-
 import { withRouter } from 'react-router-dom'
 import { translate } from 'react-i18next'
-
 import { compose } from 'ramda'
 
 import UnregisteredPresentation from '../../containers/Account/UnregisteredPresentation'
 
-const enhanced = compose(
-  translate(),
-  withRouter
-)
+const enhanced = compose(translate(), withRouter)
 
 class UnregisteredPresentationPage extends PureComponent {
   constructor (props) {
@@ -34,11 +29,11 @@ class UnregisteredPresentationPage extends PureComponent {
 }
 
 UnregisteredPresentationPage.propTypes = {
-  t: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
     replace: PropTypes.func,
   }).isRequired,
+  t: PropTypes.func.isRequired,
 }
 
 export default enhanced(UnregisteredPresentationPage)

@@ -1,27 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import { connect } from 'react-redux'
-
+import { requestLogout } from '../Account/actions'
 import Header from '../../containers/Header'
 
-const enhance = connect(
-  ({ account: { token: username } }) => ({
-    username,
-    avatar: 'https://randomuser.me/api/portraits/thumb/men/12.jpg',
-  })
-)
+const mapDispatchToProps = {
+  requestLogout,
+}
 
-const HeaderContainer = ({ avatar, username }) => (
-  <Header
-    avatar={avatar}
-    username={username}
-  />
+const mapStateToProps = ({ account: { token: username } }) => ({
+  avatar: 'https://randomuser.me/api/portraits/thumb/men/12.jpg',
+  username,
+})
+
+const enhance = connect(mapStateToProps, mapDispatchToProps)
+
+const HeaderContainer = ({
+  avatar,
+  requestLogout: onLogout,
+  username,
+}) => (
+  <Header avatar={avatar} username={username} onLogout={onLogout} />
 )
 
 HeaderContainer.propTypes = {
-  username: PropTypes.string.isRequired,
   avatar: PropTypes.string,
+  requestLogout: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
 }
 
 HeaderContainer.defaultProps = {

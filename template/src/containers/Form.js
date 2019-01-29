@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import Form from 'react-vanilla-form'
 
 class FormContainer extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {}
   }
 
-  render () {
+  render() {
     return (
       <div>
         <Form
@@ -21,14 +21,14 @@ class FormContainer extends React.Component {
           {this.props.children}
         </Form>
 
-        {this.state.result &&
+        {this.state.result && (
           <pre>
             <code>
               Result:<br />
               {JSON.stringify(this.state.result, null, 2)}
             </code>
           </pre>
-        }
+        )}
       </div>
     )
   }

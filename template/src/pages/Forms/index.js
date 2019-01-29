@@ -1,9 +1,6 @@
 import React from 'react'
 
-import {
-  Grid,
-  Row,
-} from 'former-kit'
+import { Grid, Row } from 'former-kit'
 
 import Forms from '../../containers/Forms'
 

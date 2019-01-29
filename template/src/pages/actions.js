@@ -1,6 +1,4 @@
-import {
-  combineReducers,
-} from 'redux'
+import { combineReducers } from 'redux'
 
 import account, { epic as accountEpic } from './Account/actions'
 

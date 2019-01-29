@@ -8,16 +8,17 @@ i18n
   .use(LanguageDetector)
   .use(reactI18nextModule)
   .init({
-    fallbackLng: 'en',
+    debug: true,
 
-    ns: ['translations'],
     defaultNS: 'translations',
 
-    debug: true,
+    fallbackLng: 'en-US',
 
     interpolation: {
       escapeValue: false,
     },
+
+    ns: ['translations'],
 
     react: {
       wait: true,

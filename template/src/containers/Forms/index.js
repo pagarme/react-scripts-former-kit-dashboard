@@ -1,9 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import {
-  Col,
-} from 'former-kit'
+import { Col } from 'former-kit'
 
 import Example1 from './Example1'
 import Example2 from './Example2'
@@ -30,6 +28,5 @@ FormContainer.propTypes = {
     value: PropTypes.string,
   })).isRequired,
 }
-
 
 export default FormContainer

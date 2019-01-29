@@ -1,14 +1,14 @@
+/* eslint-disable */
+
 import React from 'react'
 import {
   ResponsiveContainer,
-
   Area,
   AreaChart,
   Bar,
   BarChart,
   Line,
   LineChart,
-
   CartesianGrid,
   Legend,
   Tooltip,
@@ -21,7 +21,6 @@ import {
   CardContent,
   CardSection,
   CardTitle,
-
   Grid,
   Row,
   Col,
@@ -157,24 +156,20 @@ const data = [
 ]
 
 class StackedBarChart extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = { collapsed: false }
   }
-  render () {
+  render() {
     return (
       <Card>
-        <CardTitle
-          title="Example 1"
-        />
+        <CardTitle title="Example 1" />
         <CardContent>
           <CardSection
             title="Bar chart"
             collapsedTitle="Bar chart"
             collapsed={this.state.collapsed}
-            onTitleClick={
-              collapsed => this.setState({ collapsed: !collapsed })
-            }
+            onTitleClick={collapsed => this.setState({ collapsed: !collapsed })}
           >
             <ResponsiveContainer width="100%" height={500}>
               <BarChart
@@ -189,20 +184,10 @@ class StackedBarChart extends React.Component {
                   tickMargin={10}
                   tick={{ fontSize: 11 }}
                 />
-                <YAxis
-                  axisLine={false}
-                  height={50}
-                  tick={{ fontSize: 11 }}
-                />
-                <CartesianGrid
-                  stroke="#d7d7d7"
-                  vertical={false}
-                />
+                <YAxis axisLine={false} height={50} tick={{ fontSize: 11 }} />
+                <CartesianGrid stroke="#d7d7d7" vertical={false} />
                 <Tooltip />
-                <Legend
-                  iconType="square"
-                  iconSize={19}
-                />
+                <Legend iconType="square" iconSize={19} />
                 <Bar dataKey="P" stackId="a" fill="#57be76" />
                 <Bar dataKey="A" stackId="a" fill="#fcbb04" />
                 <Bar dataKey="BPVS" stackId="a" fill="#56b2dc" />
@@ -222,23 +207,22 @@ class StackedBarChart extends React.Component {
 
 const SimpleLineChart = () => (
   <Card>
-    <CardTitle
-      title="Example 2"
-    />
+    <CardTitle title="Example 2" />
     <CardContent>
-      <CardSection
-        title="Line chart"
-      >
+      <CardSection title="Line chart">
         <ResponsiveContainer width="100%" height={300}>
-          <LineChart
-            data={data}
-          >
+          <LineChart data={data}>
             <XAxis dataKey="name" tick={{ fontSize: 11 }} />
             <YAxis tick={{ fontSize: 11 }} />
             <CartesianGrid strokeDasharray="3 3" />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
+            <Line
+              type="monotone"
+              dataKey="pv"
+              stroke="#8884d8"
+              activeDot={{ r: 8 }}
+            />
             <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
             <Line type="monotone" dataKey="amt" stroke="#ffc658" />
           </LineChart>
@@ -250,27 +234,37 @@ const SimpleLineChart = () => (
 
 const StackedAreaChart = () => (
   <Card>
-    <CardTitle
-      title="Example 3"
-    />
+    <CardTitle title="Example 3" />
     <CardContent>
-      <CardSection
-        title="Area Chart"
-      >
+      <CardSection title="Area Chart">
         <ResponsiveContainer width="100%" height={300}>
-          <AreaChart
-            width={600}
-            height={400}
-            data={data}
-          >
+          <AreaChart width={600} height={400} data={data}>
             <XAxis dataKey="name" tick={{ fontSize: 11 }} />
             <YAxis tick={{ fontSize: 11 }} />
             <CartesianGrid strokeDasharray="3 3" />
             <Tooltip />
             <Legend />
-            <Area type="monotone" dataKey="uv" stackId="1" stroke="#8884d8" fill="#8884d8" />
-            <Area type="monotone" dataKey="pv" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
-            <Area type="monotone" dataKey="amt" stackId="1" stroke="#ffc658" fill="#ffc658" />
+            <Area
+              type="monotone"
+              dataKey="uv"
+              stackId="1"
+              stroke="#8884d8"
+              fill="#8884d8"
+            />
+            <Area
+              type="monotone"
+              dataKey="pv"
+              stackId="1"
+              stroke="#82ca9d"
+              fill="#82ca9d"
+            />
+            <Area
+              type="monotone"
+              dataKey="amt"
+              stackId="1"
+              stroke="#ffc658"
+              fill="#ffc658"
+            />
           </AreaChart>
         </ResponsiveContainer>
       </CardSection>
@@ -280,16 +274,14 @@ const StackedAreaChart = () => (
 
 const CardExample = () => (
   <Card>
-    <CardTitle
-      title="Lorem ipsum dolor sit amet"
-    />
+    <CardTitle title="Lorem ipsum dolor sit amet" />
     <CardContent>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-      venenatis placerat lacus et pretium. Aenean porttitor mi odio, vel
-      blandit nulla malesuada et. Duis a tellus quis est iaculis accumsan.
-      In diam est, egestas eu lobortis eu, laoreet ut tortor. Sed mattis
-      sapien vel malesuada sodales. Curabitur hendrerit purus sed ex
-      feugiat hendrerit. Vivamus eleifend odio a congue consectetur.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis
+      placerat lacus et pretium. Aenean porttitor mi odio, vel blandit nulla
+      malesuada et. Duis a tellus quis est iaculis accumsan. In diam est,
+      egestas eu lobortis eu, laoreet ut tortor. Sed mattis sapien vel malesuada
+      sodales. Curabitur hendrerit purus sed ex feugiat hendrerit. Vivamus
+      eleifend odio a congue consectetur.
     </CardContent>
   </Card>
 )
@@ -310,9 +302,15 @@ const Charts = () => (
       </Col>
     </Row>
     <Row flex>
-      <Col tablet={12} palm={12}><CardExample /></Col>
-      <Col tablet={12} palm={12}><CardExample /></Col>
-      <Col tablet={12} palm={12}><CardExample /></Col>
+      <Col tablet={12} palm={12}>
+        <CardExample />
+      </Col>
+      <Col tablet={12} palm={12}>
+        <CardExample />
+      </Col>
+      <Col tablet={12} palm={12}>
+        <CardExample />
+      </Col>
     </Row>
   </Grid>
 )

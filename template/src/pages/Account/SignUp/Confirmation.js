@@ -5,10 +5,7 @@ import { translate } from 'react-i18next'
 import { compose } from 'ramda'
 import { SignUpConfirmation } from '../../../containers/Account/SignUp'
 
-const enhanced = compose(
-  translate(),
-  withRouter
-)
+const enhanced = compose(translate(), withRouter)
 
 class SignUpConfirmationPage extends PureComponent {
   constructor (props) {
@@ -32,11 +29,11 @@ class SignUpConfirmationPage extends PureComponent {
 }
 
 SignUpConfirmationPage.propTypes = {
-  t: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
     replace: PropTypes.func,
   }).isRequired,
+  t: PropTypes.func.isRequired,
 }
 
 export default enhanced(SignUpConfirmationPage)

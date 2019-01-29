@@ -3,22 +3,13 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import styles from './style.css'
 
-const UnregisteredPresentationContainer = ({
-  onBackToLogin,
-  t,
-}) => (
+const UnregisteredPresentationContainer = ({ onBackToLogin, t }) => (
   <div className={styles.secondaryContent}>
     <div>
-      <h1 className={styles.title}>
-        {t('landing.title')}
-      </h1>
-      <span className={styles.uppercase}>
-        {t('landing.subtitle')}
-      </span>
+      <h1 className={styles.title}>{t('landing.title')}</h1>
+      <span className={styles.uppercase}>{t('landing.subtitle')}</span>
     </div>
-    <p className={styles.paragraph}>
-      {t('landing.body')}
-    </p>
+    <p className={styles.paragraph}>{t('landing.body')}</p>
     <div className={classNames(styles.uppercase, styles.signInBlock)}>
       <p>
         <span>

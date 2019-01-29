@@ -12,11 +12,7 @@ import { requestLogin } from '../actions'
 
 const mapStateToProps = (state) => {
   const {
-    account: {
-      errors,
-      loading,
-      token,
-    },
+    account: { errors, loading, token },
   } = state
 
   return {
@@ -33,10 +29,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const enhanced = compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
+  connect(mapStateToProps, mapDispatchToProps),
   translate(),
   withRouter
 )
@@ -66,7 +59,6 @@ class LoginPage extends PureComponent {
 }
 
 LoginPage.propTypes = {
-  t: PropTypes.func.isRequired,
   errors: PropTypes.shape({
     email: PropTypes.string,
     password: PropTypes.string,
@@ -77,6 +69,7 @@ LoginPage.propTypes = {
   }).isRequired,
   loading: PropTypes.bool,
   onLogin: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
 }
 
 LoginPage.defaultProps = {

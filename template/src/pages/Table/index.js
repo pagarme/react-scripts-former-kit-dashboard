@@ -1,10 +1,6 @@
 import React from 'react'
 
-import {
-  Grid,
-  Row,
-  Col,
-} from 'former-kit'
+import { Grid, Row, Col } from 'former-kit'
 
 import Table from '../../containers/Table'
 import renderCardBrand from '../../containers/Table/renderCardBrand'
@@ -14,26 +10,62 @@ import dataset from './dataset'
 
 const columns = [
   {
-    title: 'Status',
-    renderer: renderStatusLegend,
     accessor: ['status'],
     orderable: true,
+    renderer: renderStatusLegend,
+    title: 'Status',
   },
-  { title: 'Transaction Id', accessor: ['id'], orderable: true },
-  { title: 'Date created', accessor: ['created_at'], orderable: true },
-  { title: 'Paid amount', accessor: ['paid_amount'], orderable: true },
-  { title: 'Installments', accessor: ['installments'], orderable: true },
   {
-    title: 'Card brand',
+    accessor: ['id'],
+    orderable: true,
+    title: 'Transaction Id',
+  },
+  {
+    accessor: ['created_at'],
+    orderable: true,
+    title: 'Date created',
+  },
+  {
+    accessor: ['paid_amount'],
+    orderable: true,
+    title: 'Paid amount',
+  },
+  {
+    accessor: ['installments'],
+    orderable: true,
+    title: 'Installments',
+  },
+  {
     accessor: ['card_brand'],
     orderable: true,
     renderer: renderCardBrand,
+    title: 'Card brand',
   },
-  { title: 'Document Number', accessor: ['document_number'], orderable: true },
-  { title: 'Card Holder', accessor: ['card_holder_name'], orderable: true },
-  { title: 'E-mail', accessor: ['email'], orderable: true },
-  { title: 'IP Address', accessor: ['ip_address'], orderable: false },
-  { title: 'billing_address', accessor: ['billing_address'], orderable: true },
+  {
+    accessor: ['document_number'],
+    orderable: true,
+    title: 'Document Number',
+  },
+  {
+    accessor: ['card_holder_name'],
+    orderable: true,
+    title: 'Card Holder',
+  },
+  {
+    accessor: ['email'],
+    orderable: true,
+    title: 'E-mail',
+  },
+  {
+    accessor: ['ip_address'],
+    orderable: false,
+    title: 'IP Address',
+  },
+  {
+    accessor: ['billing_address'],
+    orderable: true,
+    title: 'billing_address',
+  },
 ]
 
 const TablePage = () => (
@@ -41,11 +73,11 @@ const TablePage = () => (
     <Row flex>
       <Col>
         <Table
-          expandable
-          selectable
-          maxColumns={5}
           columns={columns}
+          expandable
+          maxColumns={5}
           rows={dataset}
+          selectable
         />
       </Col>
     </Row>
@@ -53,4 +85,3 @@ const TablePage = () => (
 )
 
 export default TablePage
-
