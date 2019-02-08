@@ -164,46 +164,38 @@ module.exports = {
       {
         test: /\.(js|jsx|mjs)$/,
         enforce: 'pre',
-        use: [
-          {
-            options: {
-              formatter: eslintFormatter,
-              eslintPath: require.resolve('eslint'),
-              baseConfig: {
-                extends: [require.resolve('eslint-config-pagarme-react')],
-              },
-              // @remove-on-eject-begin
-              ignore: false,
-              useEslintrc: false,
-              // @remove-on-eject-end
-            },
-            loader: require.resolve('eslint-loader'),
+        loader: require.resolve('eslint-loader'),
+        options: {
+          formatter: eslintFormatter,
+          eslintPath: require.resolve('eslint'),
+          baseConfig: {
+            extends: [require.resolve('eslint-config-pagarme-react')],
           },
-        ],
+          // @remove-on-eject-begin
+          ignore: false,
+          useEslintrc: false,
+          // @remove-on-eject-end
+        },
         include: paths.srcPaths,
       },
       {
         test: /\.css$/,
         exclude: reactDatesCssRegex,
         enforce: 'pre',
-        use: [
-          {
-            loader: require.resolve('postcss-loader'),
-            options: {
-              ...postCSSLoaderOptions,
-              plugins: () => [
-                require('stylelint', {
-                  // @remove-on-eject-begin
-                  config: {
-                    extends: ['stylelint-config-pagarme-react'],
-                  },
-                  // @remove-on-eject-end
-                }),
-                ...postCSSLoaderOptions.plugins,
-              ],
-            },
-          },
-        ],
+        loader: require.resolve('postcss-loader'),
+        options: {
+          ...postCSSLoaderOptions,
+          plugins: () => [
+            require('stylelint', {
+              // @remove-on-eject-begin
+              config: {
+                extends: ['stylelint-config-pagarme-react'],
+              },
+              // @remove-on-eject-end
+            }),
+            ...postCSSLoaderOptions.plugins,
+          ],
+        },
         include: paths.appSrc,
       },
       {
@@ -227,55 +219,52 @@ module.exports = {
           {
             test: /\.(js|jsx|mjs)$/,
             include: paths.srcPaths,
-            use: [
-              {
-                loader: require.resolve('babel-loader'),
-                options: {
-                  // @remove-on-eject-begin
-                  babelrc: false,
-                  // @remove-on-eject-end
-                  presets: [
-                    require.resolve('@babel/preset-env'),
-                    require.resolve('@babel/preset-react'),
-                  ],
-                  plugins: [
-                    [
-                      require.resolve('babel-plugin-named-asset-import'),
-                      {
-                        loaderMap: {
-                          svg: {
-                            ReactComponent: 'svgr/webpack![path]',
-                          },
-                        },
+            loader: require.resolve('babel-loader'),
+            options: {
+              customize: require.resolve('babel-preset-react-app/webpack-overrides'),
+              // @remove-on-eject-begin
+              babelrc: false,
+              configFile: false,
+              // @remove-on-eject-end
+              presets: [require.resolve('babel-preset-react-app')],
+              plugins: [
+                [
+                  require.resolve('babel-plugin-named-asset-import'),
+                  {
+                    loaderMap: {
+                      svg: {
+                        ReactComponent: '@svgr/webpack?-svgo![path]',
                       },
-                    ],
-                  ],
-                  // This is a feature of `babel-loader` for webpack (not Babel itself).
-                  // It enables caching results in ./node_modules/.cache/babel-loader/
-                  // directory for faster rebuilds.
-                  cacheDirectory: true,
-                  highlightCode: true,
-                },
-              },
-            ],
+                    },
+                  },
+                ],
+              ],
+              // This is a feature of `babel-loader` for webpack (not Babel itself).
+              // It enables caching results in ./node_modules/.cache/babel-loader/
+              // directory for faster rebuilds.
+              cacheDirectory: true,
+              highlightCode: true,
+            },
           },
           // Process any JS outside of the app with Babel.
           // Unlike the application JS, we only compile the standard ES features.
           {
             test: /\.js$/,
             exclude: /@babel(?:\/|\\{1,2})runtime/,
-            use: [
-              {
-                loader: require.resolve('babel-loader'),
-                options: {
-                  babelrc: false,
-                  compact: false,
-                  presets: [require.resolve('@babel/preset-env')],
-                  cacheDirectory: true,
-                  highlightCode: true,
-                },
-              },
-            ],
+            loader: require.resolve('babel-loader'),
+            options: {
+              babelrc: false,
+              cacheDirectory: true,
+              compact: false,
+              configFile: false,
+              presets: [
+                [
+                  require.resolve('babel-preset-react-app/dependencies'),
+                  { helpers: true },
+                ],
+              ],
+              sourceMaps: false,
+            },
           },
           {
             test: /\.svg$/,
