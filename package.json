@@ -1,6 +1,6 @@
 {
   "name": "react-scripts-former-kit-dashboard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Configuration and scripts for Create React App.",
   "repository": "pagarme/react-scripts-former-kit-dashboard",
   "license": "MIT",
@@ -33,6 +33,7 @@
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.5",
     "babel-plugin-named-asset-import": "0.3.0",
+    "babel-preset-react-app": "7.0.0",
     "bfj": "6.1.1",
     "caniuse-lite": "1.0.30000934",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
@@ -45,7 +46,7 @@
     "enzyme-adapter-react-16": "1.7.1",
     "eslint": "4.19.1",
     "eslint-config-pagarme-react": "1.5.0",
-    "eslint-loader": "2.1.1",
+    "eslint-loader": "2.1.2",
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.12.3",
@@ -86,11 +87,11 @@
     "whatwg-fetch": "3.0.0"
   },
   "devDependencies": {
-    "react": "16.7.0",
-    "react-dom": "16.7.0"
+    "react": "16.8.0",
+    "react-dom": "16.8.0"
   },
   "optionalDependencies": {
-    "fsevents": "1.2.0"
+    "fsevents": "1.2.7"
   },
   "browserslist": {
     "development": [
