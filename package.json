@@ -1,6 +1,6 @@
 {
   "name": "react-scripts-former-kit-dashboard",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Configuration and scripts for Create React App.",
   "repository": "pagarme/react-scripts-former-kit-dashboard",
   "license": "MIT",
@@ -77,7 +77,6 @@
     "stylelint-config-pagarme-react": "1.2.0",
     "sw-precache-webpack-plugin": "0.11.5",
     "terser-webpack-plugin": "1.2.1",
-    "thread-loader": "2.1.1",
     "url-loader": "1.1.2",
     "webpack": "4.28.4",
     "webpack-bundle-analyzer": "3.0.3",
