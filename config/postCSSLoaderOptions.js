@@ -18,7 +18,7 @@ module.exports = {
     require('postcss-sass-each'),
     require('postcss-import'),
     require('postcss-url')({ url: postcssUrlRebase }),
-    require('postcss-cssnext'),
+    require('postcss-cssnext')({ warnForDuplicates: false } ),
     require('postcss-hexrgba'),
   ],
 }
