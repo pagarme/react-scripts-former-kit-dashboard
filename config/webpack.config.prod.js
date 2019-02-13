@@ -44,7 +44,7 @@ if (env.stringified['process.env'].NODE_ENV !== '"production"') {
 
 // style files regexes
 const cssRegex = /\.css$/
-const cssModuleRegex = /\.module\.css$/
+const reactDatesCssRegex = /.*react-dates.*\.css/
 
 // common function to get style loaders
 const getStyleLoaders = (cssOptions, preProcessor) => {
@@ -219,32 +219,6 @@ module.exports = {
     rules: [
       // Disable require.ensure as it's not a standard language feature.
       { parser: { requireEnsure: false } },
-
-      // First, run the linter.
-      // It's important to do this before Babel processes the JS.
-      {
-        test: /\.(js|jsx|mjs)$/,
-        enforce: 'pre',
-        use: [
-          {
-            options: {
-              formatter: eslintFormatter,
-              eslintPath: require.resolve('eslint'),
-              // TODO: consider separate config for production,
-              // e.g. to enable no-console and no-debugger only in production.
-              baseConfig: {
-                extends: [require.resolve('eslint-config-pagarme-react')],
-              },
-              // @remove-on-eject-begin
-              ignore: false,
-              useEslintrc: false,
-              // @remove-on-eject-end
-            },
-            loader: require.resolve('eslint-loader'),
-          },
-        ],
-        include: paths.srcPaths,
-      },
       {
         // "oneOf" will traverse all following loaders until one will
         // match the requirements. When no loader matches it will fall
@@ -268,24 +242,21 @@ module.exports = {
             use: [
               // This loader parallelizes code compilation, it is optional but
               // improves compile time on larger projects
-              require.resolve('thread-loader'),
               {
                 loader: require.resolve('babel-loader'),
                 options: {
                   // @remove-on-eject-begin
                   babelrc: false,
+                  configFile: false,
                   // @remove-on-eject-end
-                  presets: [
-                    require.resolve('@babel/preset-env'),
-                    require.resolve('@babel/preset-react'),
-                  ],
+                  presets: [require.resolve('babel-preset-react-app')],
                   plugins: [
                     [
                       require.resolve('babel-plugin-named-asset-import'),
                       {
                         loaderMap: {
                           svg: {
-                            ReactComponent: 'svgr/webpack![path]',
+                            ReactComponent: '@svgr/webpack?-svgo![path]',
                           },
                         },
                       },
@@ -302,18 +273,48 @@ module.exports = {
           {
             test: /\.js$/,
             exclude: /@babel(?:\/|\\{1,2})runtime/,
+            loader: require.resolve('babel-loader'),
+            options: {
+              babelrc: false,
+              cacheDirectory: true,
+              compact: false,
+              configFile: false,
+              presets: [
+                [
+                  require.resolve('babel-preset-react-app/dependencies'),
+                  { helpers: false },
+                ],
+              ],
+              sourceMaps: false,
+            },
+          },
+          {
+            test: /\.svg$/,
+            exclude: /@babel(?:\/|\\{1,2})runtime/,
             use: [
-              // This loader parallelizes code compilation, it is optional but
-              // improves compile time on larger projects
-              require.resolve('thread-loader'),
               {
                 loader: require.resolve('babel-loader'),
                 options: {
+                  // @remove-on-eject-begin
                   babelrc: false,
-                  compact: false,
-                  presets: [require.resolve('@babel/preset-env')],
-                  cacheDirectory: true,
-                  highlightCode: true,
+                  // @remove-on-eject-end
+                  presets: [require.resolve('babel-preset-react-app/dependencies')],
+                  compact: true,
+                },
+              },
+              {
+                loader: require.resolve('@svgr/webpack'),
+                options: {
+                  replaceAttrValues: {
+                    '#000': 'currentColor',
+                    '#000000': 'currentColor',
+                  },
+                  svgoConfig: {
+                    plugins: {
+                      removeViewBox: false,
+                    },
+                  },
+                  titleProp: true,
                 },
               },
             ],
@@ -324,8 +325,7 @@ module.exports = {
           // files. If you use code splitting, async bundles will have their own separate CSS chunk file.
           // By default we support CSS Modules with the extension .module.css
           {
-            test: cssRegex,
-            exclude: cssModuleRegex,
+            test: reactDatesCssRegex,
             loader: getStyleLoaders({
               importLoaders: 1,
               sourceMap: shouldUseSourceMap,
@@ -334,7 +334,8 @@ module.exports = {
           // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
           // using the extension .module.css
           {
-            test: cssModuleRegex,
+            test: cssRegex,
+            exclude: reactDatesCssRegex,
             loader: getStyleLoaders({
               importLoaders: 1,
               sourceMap: shouldUseSourceMap,
