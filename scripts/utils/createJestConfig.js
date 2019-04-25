@@ -27,6 +27,7 @@ module.exports = (resolve, rootDir, srcRoots) => {
     setupFiles: [
       resolve('config/polyfills.js'),
       resolve('config/jest/enzymeAdapter.js'),
+      resolve('config/jest/canvas.js'),
     ],
     setupTestFrameworkScriptFile: setupTestsFile,
     testMatch: [
