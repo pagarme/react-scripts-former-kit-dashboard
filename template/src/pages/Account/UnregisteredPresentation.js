@@ -15,14 +15,16 @@ class UnregisteredPresentationPage extends PureComponent {
   }
 
   handleLogin () {
-    this.props.history.push('/account/login')
+    const { history } = this.props
+    history.push('/account/login')
   }
 
   render () {
+    const { t } = this.props
     return (
       <UnregisteredPresentation
         onBackToLogin={this.handleLogin}
-        t={this.props.t}
+        t={t}
       />
     )
   }

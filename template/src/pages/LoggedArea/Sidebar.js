@@ -1,6 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Sidebar, SidebarHeader, SidebarLinks, SidebarLink } from 'former-kit'
+import {
+  Sidebar,
+  SidebarHeader,
+  SidebarLinks,
+  SidebarLink,
+} from 'former-kit'
 import { withRouter } from 'react-router-dom'
 import Menu32 from 'emblematic-icons/svg/Menu32.svg'
 import routes from './routes'
@@ -31,7 +36,7 @@ class SidebarContainer extends React.Component {
       <Sidebar collapsed={collapsed}>
         <SidebarHeader>
           {!collapsed && <h1>FormerKit</h1>}
-          <button onClick={this.handleToggleSidebar}>
+          <button onClick={this.handleToggleSidebar} type="button">
             <Menu32 width={16} height={16} />
           </button>
         </SidebarHeader>

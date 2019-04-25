@@ -1,6 +1,11 @@
 import React from 'react'
 
-import { Redirect, Route, Switch, withRouter } from 'react-router-dom'
+import {
+  Redirect,
+  Route,
+  Switch,
+  withRouter,
+} from 'react-router-dom'
 
 import { Layout } from 'former-kit'
 

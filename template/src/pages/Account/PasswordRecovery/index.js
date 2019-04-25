@@ -15,19 +15,22 @@ class PasswordRecoveryPage extends PureComponent {
   }
 
   handleBackToLogin () {
-    this.props.history.replace('/account/login')
+    const { history } = this.props
+    history.replace('/account/login')
   }
 
   handleSubmit () {
-    this.props.history.replace('/account/password/recovery/confirmation')
+    const { history } = this.props
+    history.replace('/account/password/recovery/confirmation')
   }
 
   render () {
+    const { t } = this.props
     return (
       <PasswordRecoveryForm
         onBackToLogin={this.handleBackToLogin}
         onSubmit={this.handleSubmit}
-        t={this.props.t}
+        t={t}
       />
     )
   }

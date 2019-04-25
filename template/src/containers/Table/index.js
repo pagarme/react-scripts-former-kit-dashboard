@@ -30,14 +30,19 @@ import style from './style.css'
 
 const isAscending = equals('ascending')
 
-const rowSort = accessor =>
-  sortBy(compose(when(is(String), toLower), defaultTo(''), path(accessor)))
+const rowSort = accessor => sortBy(
+  compose(
+    when(is(String), toLower),
+    defaultTo(''),
+    path(accessor)
+  )
+)
 
-const buildSorter = (accessor, order) =>
-  (isAscending(order)
+const buildSorter = (accessor, order) => (
+  isAscending(order)
     ? rowSort(accessor)
     : pipe(rowSort(accessor), reverse)
-  )
+)
 
 const sortByOrderColumn = (rows, columns, orderColumn, order) => {
   const referenceColumn = columns[orderColumn]
@@ -102,13 +107,14 @@ class TableContainer extends Component {
       order,
       orderColumn,
       rows,
+      selected,
       selectedRows,
     } = this.state
 
     return (
       <Card>
         <CardTitle
-          subtitle={
+          subtitle={(
             <div className={style.buttons}>
               <Button
                 fill="outline"
@@ -141,7 +147,7 @@ class TableContainer extends Component {
                 }))}
                 placeholder="Items per page"
                 size="tiny"
-                value={this.state.selected}
+                value={selected}
               />
               <Pagination
                 currentPage={1}
@@ -149,7 +155,7 @@ class TableContainer extends Component {
                 totalPages={128}
               />
             </div>
-          }
+          )}
           title="Table sample"
         />
         <CardContent>

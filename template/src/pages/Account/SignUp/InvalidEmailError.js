@@ -15,14 +15,16 @@ class InvalidEmailErrorPage extends PureComponent {
   }
 
   handleBackToSignUp () {
-    this.props.history.replace('/account/signup')
+    const { history } = this.props
+    history.replace('/account/signup')
   }
 
   render () {
+    const { t } = this.props
     return (
       <InvalidEmailError
         onBackToSignUp={this.handleBackToSignUp}
-        t={this.props.t}
+        t={t}
       />
     )
   }

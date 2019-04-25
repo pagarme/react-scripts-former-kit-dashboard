@@ -23,7 +23,11 @@ const PasswordRecoveryForm = ({ onBackToLogin, onSubmit, t }) => (
           {t('password_recovery.recovery_action')}
         </Button>
       </div>
-      <button role="link" onClick={onBackToLogin}>
+      <button
+        onClick={onBackToLogin}
+        role="link"
+        type="button"
+      >
         {t('back_login_action')}
       </button>
     </div>

@@ -40,7 +40,12 @@ const LoginContainer = ({
           {t('login.login_action')}
         </Button>
       </div>
-      <button role="link" disabled={loading} onClick={onPasswordRecovery}>
+      <button
+        disabled={loading}
+        onClick={onPasswordRecovery}
+        role="link"
+        type="button"
+      >
         {t('login.password_recovery_action')}
       </button>
     </div>

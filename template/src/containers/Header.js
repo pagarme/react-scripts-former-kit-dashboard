@@ -39,12 +39,12 @@ const HeaderContainer = ({
       />
       <Spacing size="small" />
       <HeaderMenu
-        title={
+        title={(
           <Fragment>
             <Avatar alt={username} photo={avatar} />
             <span>{username}</span>
           </Fragment>
-        }
+        )}
       >
         <PopoverContent>
           <strong>

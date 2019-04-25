@@ -15,9 +15,10 @@ const UnregisteredPresentationContainer = ({ onBackToLogin, t }) => (
         <span>
           {t('sign_up.login_call')}
           <button
-            role="link"
-            onClick={onBackToLogin}
             className={styles.signInLink}
+            onClick={onBackToLogin}
+            role="link"
+            type="button"
           >
             {t('sign_up.login_action')}
           </button>

@@ -42,16 +42,24 @@ class LoginPage extends PureComponent {
   }
 
   handlePasswordRecovery () {
-    this.props.history.push('/account/password/recovery')
+    const { history } = this.props
+    history.push('/account/password/recovery')
   }
 
   render () {
+    const {
+      errors,
+      loading,
+      onLogin,
+      t,
+    } = this.props
+
     return (
       <Login
-        t={this.props.t}
-        errors={this.props.errors}
-        loading={this.props.loading}
-        onLogin={this.props.onLogin}
+        t={t}
+        errors={errors}
+        loading={loading}
+        onLogin={onLogin}
         onPasswordRecovery={this.handlePasswordRecovery}
       />
     )
