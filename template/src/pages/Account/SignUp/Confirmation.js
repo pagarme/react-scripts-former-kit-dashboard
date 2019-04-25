@@ -15,14 +15,16 @@ class SignUpConfirmationPage extends PureComponent {
   }
 
   handleBackToLogin () {
-    this.props.history.replace('/account/login')
+    const { history } = this.props
+    history.replace('/account/login')
   }
 
   render () {
+    const { t } = this.props
     return (
       <SignUpConfirmation
         onBackToLogin={this.handleBackToLogin}
-        t={this.props.t}
+        t={t}
       />
     )
   }

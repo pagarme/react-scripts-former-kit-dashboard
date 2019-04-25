@@ -33,9 +33,10 @@ const RegisteredPresentationContainer = ({
         <span>
           {t('landing.signup_call')}
           <button
-            role="link"
-            onClick={onGotoSignup}
             className={styles.signInLink}
+            onClick={onGotoSignup}
+            role="link"
+            type="button"
           >
             {t('landing.signup_action')}
           </button>

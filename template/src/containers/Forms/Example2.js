@@ -23,11 +23,14 @@ class FormExample extends React.Component {
   }
 
   render () {
+    const { result } = this.state
+    const { companies, projects } = this.props
+
     return (
       <Fragment>
         <Card>
           <Form
-            onSubmit={result => this.setState({ result })}
+            onSubmit={formResult => this.setState({ result: formResult })}
             customErrorProp="error"
             validation={{
               name: required,
@@ -45,12 +48,12 @@ class FormExample extends React.Component {
               />
               <FormDropdown
                 name="companies"
-                options={this.props.companies}
+                options={companies}
                 placeholder="Select a company"
               />
               <RadioGroup
                 name="projects"
-                options={this.props.projects}
+                options={projects}
                 label="Select another project"
               />
             </CardContent>
@@ -61,13 +64,13 @@ class FormExample extends React.Component {
         </Card>
         <Card>
           <CardTitle title="Form Data" />
-          {this.state.result &&
+          {result && (
             <CardContent>
               <pre>
-                <code>{JSON.stringify(this.state.result, null, 2)}</code>
+                <code>{JSON.stringify(result, null, 2)}</code>
               </pre>
             </CardContent>
-          }
+          )}
         </Card>
       </Fragment>
     )

@@ -1,6 +1,10 @@
 import { merge } from 'ramda'
 
-import { LOGIN_REQUEST, LOGIN_RECEIVE, LOGOUT_REQUEST } from '.'
+import {
+  LOGIN_REQUEST,
+  LOGIN_RECEIVE,
+  LOGOUT_REQUEST,
+} from './actions'
 
 const initialState = {
   loading: false,

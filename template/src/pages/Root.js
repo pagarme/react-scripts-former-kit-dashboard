@@ -4,11 +4,11 @@ import { Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { compose } from 'ramda'
 import Account from './Account'
-import { requestLogin } from './Account/actions'
+import { requestLogin as requestLoginAction } from './Account/actions'
 import LoggedArea from './LoggedArea'
 
 const mapDispatchToProps = {
-  requestLogin,
+  requestLogin: requestLoginAction,
 }
 
 const mapStateToProps = ({ account: { token } }) => ({ token })
@@ -22,8 +22,9 @@ class Root extends Component {
   componentDidMount () {
     // eslint-disable-next-line no-undef
     const localToken = window.localStorage.getItem('token')
-    if (localToken && localToken !== 'undefined' && !this.props.token) {
-      this.props.requestLogin()
+    const { requestLogin, token } = this.props
+    if (localToken && localToken !== 'undefined' && !token) {
+      requestLogin()
     }
   }
 

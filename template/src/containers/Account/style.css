@@ -56,6 +56,14 @@
   text-transform: uppercase;
 }
 
+.signInBlock {
+  padding-bottom: 16px;
+
+  & span {
+    line-height: 30px;
+  }
+}
+
 .uppercase {
   text-transform: uppercase;
   color: #757575;
@@ -131,10 +139,10 @@
 
 .primaryContent .login {
 
+  & input,
   & input:focus ~ label,
   & input:hover,
-  & input:focus,
-  & input {
+  & input:focus {
     border-color: #ffffff;
     color: #ffffff;
     caret-color: #ffffff;
@@ -142,14 +150,6 @@
 
   & input ~ button {
     color: #ffffff;
-  }
-}
-
-.signInBlock {
-  padding-bottom: 16px;
-
-  & span {
-    line-height: 30px;
   }
 }
 

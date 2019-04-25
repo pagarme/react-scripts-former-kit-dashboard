@@ -1,6 +1,13 @@
 import React from 'react'
 
-import { Card, CardContent, CardTitle, Grid, Row, Col } from 'former-kit'
+import {
+  Card,
+  CardContent,
+  CardTitle,
+  Col,
+  Grid,
+  Row,
+} from 'former-kit'
 
 const CardExample = () => (
   <Card>

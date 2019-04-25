@@ -1,7 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Route, Switch, withRouter } from 'react-router-dom'
-import { always, anyPass, compose, contains, ifElse } from 'ramda'
+import {
+  always,
+  anyPass,
+  compose,
+  contains,
+  ifElse,
+} from 'ramda'
 import { translate } from 'react-i18next'
 
 import Account from '../../containers/Account'
@@ -25,7 +31,7 @@ const enhance = compose(withRouter, translate())
 const AccountArea = ({ history: { location }, t }) => (
   <Account
     base={getBaseByPath(location.pathname)}
-    primaryContent={
+    primaryContent={(
       <Switch>
         <Route path="/account/login" component={Login} />
         <Route
@@ -40,14 +46,14 @@ const AccountArea = ({ history: { location }, t }) => (
         <Route path="/account/signup/error" component={InvalidEmailError} />
         <Route path="/account/signup" component={SignUp} />
       </Switch>
-    }
-    secondaryContent={
+    )}
+    secondaryContent={(
       <Switch>
         <Route path="/account/login" component={RegisteredPresentation} />
         <Route path="/account/password" component={RegisteredPresentation} />
         <Route path="/account/signup" component={UnregisteredPresentation} />
       </Switch>
-    }
+    )}
     t={t}
   />
 )

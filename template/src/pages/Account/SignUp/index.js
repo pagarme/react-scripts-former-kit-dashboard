@@ -14,11 +14,13 @@ class SignUpPage extends PureComponent {
   }
 
   handleSubmit () {
-    this.props.history.replace('/account/signup/confirmation')
+    const { history } = this.props
+    history.replace('/account/signup/confirmation')
   }
 
   render () {
-    return <SingUpForm onSubmit={this.handleSubmit} t={this.props.t} />
+    const { t } = this.props
+    return <SingUpForm onSubmit={this.handleSubmit} t={t} />
   }
 }
 

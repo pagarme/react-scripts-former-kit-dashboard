@@ -15,14 +15,17 @@ class RegisteredPresentationPage extends PureComponent {
   }
 
   handleLanguageChange (lang) {
-    this.props.i18n.changeLanguage(lang)
+    const { i18n } = this.props
+    i18n.changeLanguage(lang)
   }
 
   handleSignup () {
-    this.props.history.push('/account/signup')
+    const { history } = this.props
+    history.push('/account/signup')
   }
 
   render () {
+    const { i18n, t } = this.props
     return (
       <RegisteredPresentation
         onGotoSignup={this.handleSignup}
@@ -36,9 +39,9 @@ class RegisteredPresentationPage extends PureComponent {
             value: 'pt',
           },
         ]}
-        selectedLanguage={this.props.i18n.language}
+        selectedLanguage={i18n.language}
         onLanguageChange={this.handleLanguageChange}
-        t={this.props.t}
+        t={t}
       />
     )
   }
