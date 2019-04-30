@@ -1,3 +1,4 @@
+@import "former-kit-skin-pagarme/dist/styles/spacing.css";
 
 .languageSwitcher {
   padding-top: 8px;
@@ -26,7 +27,7 @@
 }
 
 .secondaryContent {
-  flex: 1;
+  flex: 2;
   color: #a0a0a0;
   justify-content: flex-start;
 }
@@ -34,7 +35,7 @@
 .primaryContent {
   color: #ffffff;
   justify-content: space-around;
-  flex: 1;
+  flex: 2;
 }
 
 .secondaryContent,
@@ -84,6 +85,7 @@
 
 .logo {
   width: 100%;
+  margin-bottom: var(--spacing-medium);
 }
 
 .login,

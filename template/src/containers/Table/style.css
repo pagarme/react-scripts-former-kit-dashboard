@@ -18,3 +18,11 @@
     margin-left: unset;
   }
 }
+
+.subTitle {
+  display: flex;
+
+  & > * {
+    margin-left: var(--spacing-small);
+  }
+}
