@@ -4,6 +4,7 @@ import {
   Landing,
   LandingPrimarySection,
   LandingSecondarySection,
+  Spacing,
 } from 'former-kit'
 import Logo from '../../components/Logo'
 import styles from './style.css'
@@ -17,14 +18,21 @@ const Account = ({
   <Landing className={styles.container}>
     <LandingPrimarySection base={base}>
       <div className={styles.columnContainer}>
+        <Spacing />
         <div className={styles.logo}>
           <Logo alt={t('landing.logo')} height="200px" />
         </div>
+        <Spacing size="large" />
         {primaryContent}
+        <Spacing />
       </div>
     </LandingPrimarySection>
     <LandingSecondarySection>
-      <div className={styles.columnContainer}>{secondaryContent}</div>
+      <div className={styles.columnContainer}>
+        <Spacing />
+        {secondaryContent}
+        <Spacing />
+      </div>
     </LandingSecondarySection>
   </Landing>
 )

@@ -19,8 +19,12 @@ import {
   Card,
   CardContent,
   CardTitle,
+  Col,
   Dropdown,
+  Grid,
   Pagination,
+  Row,
+  Spacing,
   Table,
 } from 'former-kit'
 
@@ -50,6 +54,13 @@ const sortByOrderColumn = (rows, columns, orderColumn, order) => {
   const sort = buildSorter(referenceAccessor, order)
   return sort(rows)
 }
+
+const log = (value) => {
+  // eslint-disable-next-line no-console
+  console.info(value)
+}
+
+const onButtonClick = msg => () => log(`You clicked in a button ${msg}`)
 
 class TableContainer extends Component {
   constructor (props) {
@@ -112,71 +123,102 @@ class TableContainer extends Component {
     } = this.state
 
     return (
-      <Card>
-        <CardTitle
-          subtitle={(
-            <div className={style.buttons}>
-              <Button
-                fill="outline"
-                icon={<IconAdd24 width="12px" height="12px" />}
-                relevance="low"
-              >
-                Click me
-              </Button>
-              <Button
-                fill="outline"
-                icon={<IconAdd24 width="12px" height="12px" />}
-                relevance="low"
-              >
-                Click me
-              </Button>
-              <Button
-                fill="outline"
-                icon={<IconAdd24 width="12px" height="12px" />}
-                relevance="low"
-              >
-                Click me
-              </Button>
-              <span />
-              <Dropdown
-                name="count"
-                onChange={() => undefined}
-                options={[10, 20, 30, 40, 50].map(i => ({
-                  name: `${i} items per page`,
-                  value: `${i}`,
-                }))}
-                placeholder="Items per page"
-                size="tiny"
-                value={selected}
+      <Grid>
+        <Row flex>
+          <Col
+            desk={12}
+            palm={12}
+            tablet={12}
+            tv={12}
+          >
+            <Card>
+              <CardTitle title="Buttons sample" />
+              <CardContent>
+                <div className={style.buttons}>
+                  <Button
+                    fill="outline"
+                    icon={<IconAdd24 width="12px" height="12px" />}
+                    onClick={onButtonClick('with low relevance')}
+                    relevance="low"
+                  >
+                    Click me
+                  </Button>
+                  <Button
+                    fill="outline"
+                    icon={<IconAdd24 width="12px" height="12px" />}
+                    onClick={onButtonClick('with outline fill and high relevance')}
+                    relevance="high"
+                  >
+                    Click me
+                  </Button>
+                  <Button
+                    fill="clean"
+                    icon={<IconAdd24 width="12px" height="12px" />}
+                    onClick={onButtonClick('with clean fill')}
+                  >
+                    Click me
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </Col>
+        </Row>
+        <Row flex>
+          <Col
+            desk={12}
+            palm={12}
+            tablet={12}
+            tv={12}
+          >
+            <Card>
+              <CardTitle
+                subtitle={(
+                  <div className={style.subTitle}>
+                    <Spacing />
+                    <Dropdown
+                      name="count"
+                      onChange={({ target: { value } }) => (
+                        log(`Items per page changed to ${value}`)
+                      )}
+                      options={[10, 20, 30, 40, 50].map(i => ({
+                        name: `${i} items per page`,
+                        value: `${i}`,
+                      }))}
+                      placeholder="Items per page"
+                      size="tiny"
+                      value={selected}
+                    />
+                    <Pagination
+                      currentPage={1}
+                      onPageChange={page => log(`Pagination changed to ${page}`)}
+                      totalPages={2}
+                    />
+                  </div>
+                )}
+                title="Table sample"
               />
-              <Pagination
-                currentPage={1}
-                onPageChange={() => undefined}
-                totalPages={128}
-              />
-            </div>
-          )}
-          title="Table sample"
-        />
-        <CardContent>
-          <Table
-            className={style.table}
-            columns={columns}
-            expandable={expandable}
-            expandedRows={expandedRows}
-            maxColumns={maxColumns}
-            onExpandRow={this.handleExpandRow}
-            onOrderChange={this.handleOrderChange}
-            onRowClick={onRowClick}
-            onSelectRow={this.handleSelectRow}
-            orderColumn={orderColumn}
-            orderSequence={order}
-            rows={rows}
-            selectable={selectable}
-            selectedRows={selectedRows}
-          />
-        </CardContent>
-      </Card>
+              <CardContent>
+                <Table
+                  className={style.table}
+                  columns={columns}
+                  expandable={expandable}
+                  expandedRows={expandedRows}
+                  maxColumns={maxColumns}
+                  onExpandRow={this.handleExpandRow}
+                  onOrderChange={this.handleOrderChange}
+                  onRowClick={onRowClick}
+                  onSelectRow={this.handleSelectRow}
+                  orderColumn={orderColumn}
+                  orderSequence={order}
+                  rows={rows}
+                  selectable={selectable}
+                  selectedRows={selectedRows}
+                />
+              </CardContent>
+            </Card>
+          </Col>
+        </Row>
+      </Grid>
     )
   }
 }
