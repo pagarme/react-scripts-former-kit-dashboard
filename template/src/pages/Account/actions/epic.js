@@ -26,9 +26,16 @@ const loginEpic = action$ => action$.pipe(
         .resolve({ token })
         .then(receiveLogin)
     }
-    // eslint-disable-next-line no-undef
+
+    // This email mock is necessary because of the reares api validation
+    // https://github.com/benhowdle89/reqres/blob/master/routes/index.js#L53
+    const bodyReq = {
+      ...action.payload,
+      email: 'george.bluth@reqres.in',
+    }
+
     return window.fetch('https://reqres.in/api/login', {
-      body: JSON.stringify(action.payload),
+      body: JSON.stringify(bodyReq),
       headers,
       method,
     })
