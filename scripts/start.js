@@ -91,13 +91,13 @@ checkBrowsers(paths.appPath)
     const appName = require(paths.appPackageJson).name
     const urls = prepareUrls(protocol, HOST, port)
     // Create a webpack compiler that is configured with custom messages.
-    const compiler = createCompiler(
+    const compiler = createCompiler({
       webpack,
       config,
       appName,
       urls,
-      paths.useYarn
-    )
+      useYarn: paths.useYarn
+    })
     // Load proxy config
     const proxySetting = require(paths.appPackageJson).proxy
     const proxyConfig = prepareProxy(proxySetting, paths.appPublic)
