@@ -279,6 +279,7 @@ module.exports = {
                   { helpers: false },
                 ],
               ],
+              plugins: [require.resolve('@babel/plugin-syntax-dynamic-import')],
               sourceMaps: false,
             },
           },

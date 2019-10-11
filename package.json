@@ -1,6 +1,6 @@
 {
   "name": "react-scripts-former-kit-dashboard",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "Configuration and scripts for Create React App.",
   "repository": "pagarme/react-scripts-former-kit-dashboard",
   "license": "MIT",
@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@babel/core": "7.5.5",
+    "@babel/plugin-syntax-dynamic-import": "7.2.0",
     "@babel/plugin-transform-react-constant-elements": "7.5.0",
     "@babel/preset-env": "7.5.5",
     "@babel/preset-react": "7.0.0",
@@ -55,7 +56,7 @@
     "html-webpack-plugin": "4.0.0-beta.8",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.8.0",
-    "jest-canvas-mock":"2.1.0",
+    "jest-canvas-mock": "2.1.0",
     "loader-utils": "1.2.3",
     "mini-css-extract-plugin": "0.8.0",
     "object-assign": "4.1.1",
