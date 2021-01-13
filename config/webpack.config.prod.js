@@ -21,6 +21,7 @@ const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const paths = require('./paths')
 const getClientEnvironment = require('./env')
 const postCSSLoaderOptions = require('./postCSSLoaderOptions')
+const CopyPlugin = require('copy-webpack-plugin')
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -360,6 +361,15 @@ module.exports = {
     ],
   },
   plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          context: 'src',
+          from: 'locales/**/*.json',
+          to: '[path]/[name].[hash:8].[ext]',
+        },
+      ],
+    }),
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({
       inject: true,

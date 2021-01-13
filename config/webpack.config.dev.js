@@ -19,6 +19,7 @@ const getClientEnvironment = require('./env')
 const paths = require('./paths')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const postCSSLoaderOptions = require('./postCSSLoaderOptions')
+const CopyPlugin = require("copy-webpack-plugin")
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -340,6 +341,15 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          context: 'src',
+          from: 'locales/**/*.json',
+          to: '[path]/[name].[hash:8].[ext]',
+        },
+      ],
     }),
     // Makes some environment variables available in index.html.
     // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
