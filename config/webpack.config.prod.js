@@ -456,6 +456,8 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty',
+    Buffer: false,
+    process: false,
   },
   // Turn off performance processing because we utilize
   // our own hints via the FileSizeReporter
