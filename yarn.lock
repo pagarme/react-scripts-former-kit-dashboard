@@ -9928,12 +9928,13 @@ postcss-font-variant@^3.0.0:
   dependencies:
     postcss "^6.0.1"
 
-postcss-hexrgba@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/postcss-hexrgba/-/postcss-hexrgba-1.0.2.tgz#04a3206617f2c00d53b754dbba5406d32772db00"
-  integrity sha512-1+W/ChIJQNSqZU3glt1tZyQbzCB5x9H5NKRBbaX+ccyI5I8itY4/3H4kWh2R+teWdFTfGp0OveUTpblEWA6iAA==
+postcss-hexrgba@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-hexrgba/-/postcss-hexrgba-2.0.1.tgz#c0200574277994ad061cd7a5267796331bb9a449"
+  integrity sha512-u3R4THvbCk3hNkbDquwhvP68QfMxjolgi4BD/hybR9n4/vVFWme5+kdSn/dIpH+UfEqfsWmIBg7ZYBTsI3pk/Q==
   dependencies:
-    postcss "^6.0.7"
+    postcss "^7.0.14"
+    postcss-value-parser "^4.1.0"
 
 postcss-html@^0.36.0:
   version "0.36.0"
@@ -10400,6 +10401,11 @@ postcss-value-parser@^4.0.0:
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.0.0.tgz#99a983d365f7b2ad8d0f9b8c3094926eab4b936d"
   integrity sha512-ESPktioptiSUchCKgggAkzdmkgzKfmp0EU8jXH+5kbIUB+unr0Y4CY9SRMvibuvYUBjNh1ACLbxqYNpdTQOteQ==
 
+postcss-value-parser@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.1.0.tgz#443f6a20ced6481a2bda4fa8532a6e55d789a2cb"
+  integrity sha512-97DXOFbQJhk71ne5/Mt6cOu6yxsSfM0QGQyl0L25Gca4yGWEGJaig7l7gbCX623VqTBNGLRLaVUCnNkcedlRSQ==
+
 postcss-values-parser@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/postcss-values-parser/-/postcss-values-parser-1.5.0.tgz#5d9fa63e2bcb0179ce48f3235303765eb89f3047"
@@ -10428,7 +10434,7 @@ postcss@^5.2.16, postcss@^5.2.6:
     source-map "^0.5.6"
     supports-color "^3.2.3"
 
-postcss@^6.0, postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.11, postcss@^6.0.14, postcss@^6.0.17, postcss@^6.0.18, postcss@^6.0.22, postcss@^6.0.23, postcss@^6.0.5, postcss@^6.0.6, postcss@^6.0.7:
+postcss@^6.0, postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.11, postcss@^6.0.14, postcss@^6.0.17, postcss@^6.0.18, postcss@^6.0.22, postcss@^6.0.23, postcss@^6.0.5, postcss@^6.0.6:
   version "6.0.23"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.23.tgz#61c82cc328ac60e677645f979054eb98bc0e3324"
   integrity sha512-soOk1h6J3VMTZtVeVpv15/Hpdl2cBLX3CAw4TAbkpTJiNPk9YP/zWcD1ND+xEtvyuuvKzbxliTOIyvkSeSJ6ag==
