@@ -68,7 +68,7 @@
     "postcss-hexrgba": "2.0.1",
     "postcss-import": "14.0.0",
     "postcss-loader": "4.2.0",
-    "postcss-safe-parser": "4.0.1",
+    "postcss-safe-parser": "5.0.2",
     "postcss-sass-each": "0.1.0",
     "postcss-url": "8.0.0",
     "promise": "8.0.3",
