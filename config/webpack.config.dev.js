@@ -296,7 +296,7 @@ module.exports = {
           // "style" loader turns CSS into JS modules that inject <style> tags.
           // In production, we use a plugin to extract that CSS to a file, but
           // in development "style" loader enables hot editing of CSS.
-          // By default we support CSS Modules with the extension .module.css
+          // By default we support CSS Modules with the extension .css
           {
             test: reactDatesCssRegex,
             use: getStyleLoaders({
@@ -304,7 +304,7 @@ module.exports = {
             }),
           },
           // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
-          // using the extension .module.css
+          // using the extension .css
           {
             test: cssRegex,
             exclude: reactDatesCssRegex,

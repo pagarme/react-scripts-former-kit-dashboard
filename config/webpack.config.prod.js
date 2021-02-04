@@ -319,7 +319,7 @@ module.exports = {
           // "css" loader resolves paths in CSS and adds assets as dependencies.
           // `MiniCSSExtractPlugin` extracts styles into CSS
           // files. If you use code splitting, async bundles will have their own separate CSS chunk file.
-          // By default we support CSS Modules with the extension .module.css
+          // By default we support CSS Modules with the extension .css
           {
             test: reactDatesCssRegex,
             loader: getStyleLoaders({
@@ -328,7 +328,7 @@ module.exports = {
             }),
           },
           // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
-          // using the extension .module.css
+          // using the extension .css
           {
             test: cssRegex,
             exclude: reactDatesCssRegex,
