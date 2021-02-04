@@ -61,16 +61,14 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
       options: {
         // Necessary for external CSS imports to work
         // https://github.com/facebook/create-react-app/issues/2677
-        ident: 'postcss',
-        plugins: () => [
-          require('postcss-flexbugs-fixes'),
-          require("postcss-safe-parser"),
-          autoprefixer({
-            flexbox: 'no-2009',
-          }),
-          ...postCSSLoaderOptions.plugins,
-        ],
-        sourceMap: shouldUseSourceMap,
+        postcssOptions: {
+          plugins: [
+            require('postcss-flexbugs-fixes'),
+            require('postcss-safe-parser'),
+            autoprefixer({ flexbox: 'no-2009' }),
+            ...postCSSLoaderOptions.plugins,
+          ]
+        },
       },
     },
   ]

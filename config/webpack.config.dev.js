@@ -173,7 +173,7 @@ module.exports = {
         loader: require.resolve('postcss-loader'),
         options: {
           ...postCSSLoaderOptions,
-          plugins: () => [
+          plugins: [
             require('stylelint', {
               // @remove-on-eject-begin
               config: {

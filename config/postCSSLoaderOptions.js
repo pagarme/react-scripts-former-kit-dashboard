@@ -12,7 +12,6 @@ function postcssUrlRebase(asset, dir) {
 module.exports = {
   // Necessary for external CSS imports to work
   // https://github.com/facebookincubator/create-react-app/issues/2677
-  ident: 'postcss',
   importLoaders: 1,
   plugins: [
     require('postcss-sass-each'),
