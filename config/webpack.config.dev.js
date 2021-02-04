@@ -17,7 +17,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter')
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const getClientEnvironment = require('./env')
 const paths = require('./paths')
-const ManifestPlugin = require('webpack-manifest-plugin')
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const postCSSLoaderOptions = require('./postCSSLoaderOptions')
 const CopyPlugin = require("copy-webpack-plugin")
 
@@ -379,7 +379,7 @@ module.exports = {
     // Generate a manifest file which contains a mapping of all asset filenames
     // to their corresponding output file so that tools can pick it up without
     // having to parse `index.html`.
-    new ManifestPlugin({
+    new WebpackManifestPlugin({
       fileName: 'asset-manifest.json',
       publicPath: publicPath,
     }),
