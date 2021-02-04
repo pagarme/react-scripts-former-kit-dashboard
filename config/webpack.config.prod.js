@@ -322,7 +322,7 @@ module.exports = {
           // By default we support CSS Modules with the extension .css
           {
             test: reactDatesCssRegex,
-            loader: getStyleLoaders({
+            use: getStyleLoaders({
               importLoaders: 1,
               sourceMap: shouldUseSourceMap,
             }),
@@ -332,7 +332,7 @@ module.exports = {
           {
             test: cssRegex,
             exclude: reactDatesCssRegex,
-            loader: getStyleLoaders({
+            use: getStyleLoaders({
               importLoaders: 1,
               sourceMap: shouldUseSourceMap,
               modules: true,
