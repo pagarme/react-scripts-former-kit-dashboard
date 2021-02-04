@@ -27,7 +27,7 @@
     "@babel/preset-env": "7.12.13",
     "@babel/preset-react": "7.12.13",
     "@babel/runtime": "7.12.13",
-    "@svgr/webpack": "4.3.2",
+    "@svgr/webpack": "5.5.0",
     "autoprefixer": "9.6.1",
     "babel-eslint": "10.1.0",
     "babel-jest": "26.1.0",
