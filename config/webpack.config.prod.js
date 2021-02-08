@@ -115,6 +115,7 @@ module.exports = {
     // We don't currently advertise code splitting but Webpack supports it.
     filename: 'static/js/[name].[chunkhash:8].js',
     chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
+    assetModuleFilename: 'static/media/[hash][ext][query]',
     // We inferred the "public path" (such as / or /my-project) from homepage.
     publicPath: publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
@@ -341,23 +342,16 @@ module.exports = {
               },
             }),
           },
-          // "file" loader makes sure assets end up in the `build` folder.
+          // "asset" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
           // This loader doesn't use a "test" so it will catch all modules
           // that fall through the other loaders.
           {
-            loader: require.resolve('file-loader'),
-            // Exclude `js` files to keep "css" loader working as it injects
-            // it's runtime that would otherwise be processed through "file" loader.
-            // Also exclude `html` and `json` extensions so they get processed
-            // by webpacks internal loaders.
             exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
-            options: {
-              name: 'static/media/[name].[contenthash:8].[ext]',
-            },
+            type: 'asset/resource',
           },
           // ** STOP ** Are you adding a new loader?
-          // Make sure to add the new loader(s) before the "file" loader.
+          // Make sure to add the new loader(s) before the "asset" loader.
         ],
       },
     ],
