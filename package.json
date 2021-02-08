@@ -79,7 +79,7 @@
     "stylelint": "10.1.0",
     "stylelint-config-pagarme-react": "2.0.0",
     "sw-precache-webpack-plugin": "1.0.0",
-    "terser-webpack-plugin": "4.2.3",
+    "terser-webpack-plugin": "5.1.1",
     "url-loader": "4.1.1",
     "webpack": "5.18.0",
     "webpack-bundle-analyzer": "3.3.2",
