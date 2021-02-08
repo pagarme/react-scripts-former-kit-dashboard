@@ -67,7 +67,7 @@
     "postcss-flexbugs-fixes": "5.0.2",
     "postcss-hexrgba": "2.0.1",
     "postcss-import": "14.0.0",
-    "postcss-loader": "4.2.0",
+    "postcss-loader": "5.0.0",
     "postcss-safe-parser": "5.0.2",
     "postcss-sass-each": "0.1.0",
     "postcss-url": "10.1.1",
