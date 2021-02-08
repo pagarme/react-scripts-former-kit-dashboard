@@ -82,7 +82,7 @@
     "url-loader": "4.1.1",
     "webpack": "5.18.0",
     "webpack-bundle-analyzer": "3.3.2",
-    "webpack-dev-server": "3.7.2",
+    "webpack-dev-server": "4.0.0-beta.0",
     "webpack-manifest-plugin": "3.0.0",
     "whatwg-fetch": "3.0.0"
   },
