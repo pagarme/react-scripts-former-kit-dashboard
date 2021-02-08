@@ -229,7 +229,7 @@ module.exports = {
             loader: require.resolve('url-loader'),
             options: {
               limit: 10000,
-              name: 'static/media/[name].[hash:8].[ext]',
+              name: 'static/media/[name].[contenthash:8].[ext]',
             },
           },
           // Process application JS with Babel.
@@ -355,7 +355,7 @@ module.exports = {
             // by webpacks internal loaders.
             exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
             options: {
-              name: 'static/media/[name].[hash:8].[ext]',
+              name: 'static/media/[name].[contenthash:8].[ext]',
             },
           },
           // ** STOP ** Are you adding a new loader?
@@ -370,7 +370,7 @@ module.exports = {
         {
           context: 'src',
           from: 'locales/**/*.json',
-          to: '[path]/[name].[hash:8].[ext]',
+          to: '[path]/[name].[contenthash:8].[ext]',
         },
       ],
     }),
