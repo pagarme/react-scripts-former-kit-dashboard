@@ -164,8 +164,6 @@ module.exports = {
         // Default number of concurrent runs: os.cpus().length - 1
         parallel: true,
         // Enable file caching
-        cache: true,
-        sourceMap: shouldUseSourceMap,
       }),
       new OptimizeCSSAssetsPlugin({
         cssProcessor: require('cssnano'),
