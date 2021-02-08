@@ -48,7 +48,12 @@ const reactDatesCssRegex = /.*react-dates.*\.css/
 // common function to get style loaders
 const getStyleLoaders = (cssOptions, preProcessor) => {
   const loaders = [
-    MiniCssExtractPlugin.loader,
+    {
+      loader: MiniCssExtractPlugin.loader,
+      options: {
+        esModule: false,
+      },
+    },
     {
       loader: require.resolve('css-loader'),
       options: cssOptions,
@@ -72,6 +77,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
       },
     },
   ]
+
   if (preProcessor) {
     loaders.push({
       loader: require.resolve(preProcessor),
@@ -80,6 +86,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
       },
     })
   }
+
   return loaders
 }
 
