@@ -338,8 +338,9 @@ module.exports = {
             use: getStyleLoaders({
               importLoaders: 1,
               sourceMap: shouldUseSourceMap,
-              modules: true,
-              getLocalIdent: getCSSModuleLocalIdent,
+              modules: {
+                getLocalIdent: getCSSModuleLocalIdent
+              },
             }),
           },
           // "file" loader makes sure assets end up in the `build` folder.
