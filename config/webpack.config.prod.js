@@ -212,6 +212,17 @@ module.exports = {
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
     },
+    fallback: {
+      assert: require.resolve('assert/'),
+      constants: require.resolve('constants-browserify'),
+      crypto: require.resolve('crypto-browserify'),
+      events: require.resolve('events/'),
+      http: require.resolve('stream-http'),
+      https: require.resolve('https-browserify'),
+      stream: require.resolve('stream-browserify'),
+      vm: require.resolve('vm-browserify'),
+      zlib: require.resolve('browserify-zlib'),
+    }
   },
   module: {
     strictExportPresence: true,
@@ -445,6 +456,10 @@ module.exports = {
     new webpack.IgnorePlugin({
       resourceRegExp: /^\.\/locale$/,
       contextRegExp: /moment$/,
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+      Buffer: ['buffer', 'Buffer'],
     }),
   ],
   // Turn off performance processing because we utilize

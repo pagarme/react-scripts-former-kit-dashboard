@@ -156,6 +156,17 @@ module.exports = {
       // resolves react references to avoid hooks multiple react error
       'react': path.dirname(require.resolve('react'))
     },
+    fallback: {
+      assert: require.resolve('assert/'),
+      constants: require.resolve('constants-browserify'),
+      crypto: require.resolve('crypto-browserify'),
+      events: require.resolve('events/'),
+      http: require.resolve('stream-http'),
+      https: require.resolve('https-browserify'),
+      stream: require.resolve('stream-browserify'),
+      vm: require.resolve('vm-browserify'),
+      zlib: require.resolve('browserify-zlib'),
+    },
   },
   module: {
     strictExportPresence: true,
@@ -189,7 +200,7 @@ module.exports = {
                   require('stylelint')({
                     // @remove-on-eject-begin
                     config: {
-                      extends: ['stylelint-config-pagarme-react'],
+                      extends: [require.resolve('stylelint-config-pagarme-react')],
                     },
                     // @remove-on-eject-end
                   }),
@@ -394,6 +405,10 @@ module.exports = {
     new WebpackManifestPlugin({
       fileName: 'asset-manifest.json',
       publicPath: publicPath,
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+      Buffer: ['buffer', 'Buffer'],
     }),
   ],
 
