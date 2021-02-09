@@ -75,7 +75,7 @@
     "react-dev-utils": "11.0.1",
     "resolve": "1.11.0",
     "style-loader": "2.0.0",
-    "stylelint": "10.1.0",
+    "stylelint": "13.9.0",
     "stylelint-config-pagarme-react": "2.0.0",
     "sw-precache-webpack-plugin": "1.0.0",
     "terser-webpack-plugin": "5.1.1",
