@@ -5,7 +5,7 @@
   "repository": "pagarme/react-scripts-former-kit-dashboard",
   "license": "MIT",
   "engines": {
-    "node": ">=6"
+    "node": ">=10.22.1"
   },
   "bugs": {
     "url": "https://github.com/pagarme/react-scripts-former-kit-dashboard/issues"
