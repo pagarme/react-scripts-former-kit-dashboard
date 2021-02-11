@@ -1,9 +1,12 @@
 import React from 'react'
 import { MemoryRouter } from 'react-router'
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { mount } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+import { configure, mount } from 'enzyme'
 import App from './App'
 import Login from './pages/Account/Login'
+
+configure({ adapter: new Adapter() })
 
 it('renders without crashing', () => {
   const wrapper = mount(
