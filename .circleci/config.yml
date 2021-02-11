@@ -3,7 +3,7 @@ image: ubuntu:16.04
 jobs:
   build:
     docker:
-      - image: node:10.15.0-alpine
+      - image: node:10.22.1-alpine
 
     working_directory: ~/repo
 
