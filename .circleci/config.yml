@@ -18,8 +18,8 @@ jobs:
           - yarn-cache
 
       - run: |
-          yarn global add create-react-app
-          create-react-app --scripts-version file:/$(pwd) testapp
+          yarn
+          npx create-react-app --scripts-version file:/$(pwd) testapp
           cd testapp
           npm run test
           npm run build
