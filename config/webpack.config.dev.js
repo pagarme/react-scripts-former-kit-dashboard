@@ -188,7 +188,7 @@ module.exports = {
       },
       {
         test: cssRegex,
-        exclude: reactDatesCssRegex,
+        exclude: [reactDatesCssRegex, /node_modules/],
         enforce: 'pre',
         use: [
           {
@@ -200,11 +200,11 @@ module.exports = {
                   require('stylelint')({
                     // @remove-on-eject-begin
                     config: {
-                      extends: [require.resolve('stylelint-config-pagarme-react')],
+                      extends: ['stylelint-config-pagarme-react'],
                     },
                     // @remove-on-eject-end
                   }),
-                ]
+                ],
               },
             },
           },
