@@ -15,7 +15,8 @@ jobs:
 
       - restore_cache:
           keys:
-          - yarn-cache
+            - dependencies-{{ checksum "yarn.lock" }}
+            - dependencies-
 
       - run: |
           yarn
@@ -25,7 +26,6 @@ jobs:
           npm run build
 
       - save_cache:
+          key: dependencies-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.yarn-cache
-          key: yarn-cache
-
+            - ~/.cache/yarn
