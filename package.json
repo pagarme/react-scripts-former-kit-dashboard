@@ -15,7 +15,8 @@
     "config",
     "scripts",
     "template",
-    "utils"
+    "utils",
+    "patches"
   ],
   "bin": {
     "react-scripts": "./bin/react-scripts.js"
