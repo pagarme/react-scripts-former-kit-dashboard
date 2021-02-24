@@ -3,7 +3,7 @@ image: ubuntu:16.04
 jobs:
   build:
     docker:
-      - image: node:10.15.0-alpine
+      - image: node:10.22.1-alpine
 
     working_directory: ~/repo
 
@@ -15,17 +15,17 @@ jobs:
 
       - restore_cache:
           keys:
-          - yarn-cache
+            - dependencies-{{ checksum "yarn.lock" }}
+            - dependencies-
 
       - run: |
-          yarn global add create-react-app
-          create-react-app --scripts-version file:/$(pwd) testapp
+          yarn
+          npx create-react-app --scripts-version file:/$(pwd) testapp
           cd testapp
           npm run test
           npm run build
 
       - save_cache:
+          key: dependencies-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.yarn-cache
-          key: yarn-cache
-
+            - ~/.cache/yarn

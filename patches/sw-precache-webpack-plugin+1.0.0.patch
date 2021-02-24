@@ -1,0 +1,26 @@
+diff --git a/node_modules/sw-precache-webpack-plugin/lib/index.js b/node_modules/sw-precache-webpack-plugin/lib/index.js
+index 165e8af..4a45cba 100644
+--- a/node_modules/sw-precache-webpack-plugin/lib/index.js
++++ b/node_modules/sw-precache-webpack-plugin/lib/index.js
+@@ -238,7 +238,7 @@ var SWPrecacheWebpackPlugin = function () {
+       // use the outputFileSystem api to manually write service workers rather than adding to the compilation assets
+ 
+       return new Promise(function (resolve, reject) {
+-        outputFileSystem.mkdirp(_path2.default.resolve(filepath, '..'), function (mkdirErr) {
++        outputFileSystem.mkdir(_path2.default.resolve(filepath, '..'), { recursive: true }, function (mkdirErr) {
+           if (mkdirErr) {
+             reject(mkdirErr);
+             return;
+diff --git a/node_modules/sw-precache-webpack-plugin/src/index.js b/node_modules/sw-precache-webpack-plugin/src/index.js
+index bbe838a..d0a906a 100644
+--- a/node_modules/sw-precache-webpack-plugin/src/index.js
++++ b/node_modules/sw-precache-webpack-plugin/src/index.js
+@@ -204,7 +204,7 @@ class SWPrecacheWebpackPlugin {
+ 
+     // use the outputFileSystem api to manually write service workers rather than adding to the compilation assets
+     return new Promise((resolve, reject) => {
+-      outputFileSystem.mkdirp(path.resolve(filepath, '..'), (mkdirErr) => {
++      outputFileSystem.mkdir(path.resolve(filepath, '..'), { recursive: true }, (mkdirErr) => {
+         if (mkdirErr) {
+           reject(mkdirErr);
+           return;

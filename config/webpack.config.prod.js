@@ -14,7 +14,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const ManifestPlugin = require('webpack-manifest-plugin')
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
@@ -48,7 +48,12 @@ const reactDatesCssRegex = /.*react-dates.*\.css/
 // common function to get style loaders
 const getStyleLoaders = (cssOptions, preProcessor) => {
   const loaders = [
-    MiniCssExtractPlugin.loader,
+    {
+      loader: MiniCssExtractPlugin.loader,
+      options: {
+        esModule: false,
+      },
+    },
     {
       loader: require.resolve('css-loader'),
       options: cssOptions,
@@ -61,19 +66,18 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
       options: {
         // Necessary for external CSS imports to work
         // https://github.com/facebook/create-react-app/issues/2677
-        ident: 'postcss',
-        plugins: () => [
-          require('postcss-flexbugs-fixes'),
-          require("postcss-safe-parser"),
-          autoprefixer({
-            flexbox: 'no-2009',
-          }),
-          ...postCSSLoaderOptions.plugins,
-        ],
-        sourceMap: shouldUseSourceMap,
+        postcssOptions: {
+          plugins: [
+            require('postcss-flexbugs-fixes'),
+            require('postcss-safe-parser'),
+            autoprefixer({ flexbox: 'no-2009' }),
+            ...postCSSLoaderOptions.plugins,
+          ]
+        },
       },
     },
   ]
+
   if (preProcessor) {
     loaders.push({
       loader: require.resolve(preProcessor),
@@ -82,6 +86,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
       },
     })
   }
+
   return loaders
 }
 
@@ -110,6 +115,7 @@ module.exports = {
     // We don't currently advertise code splitting but Webpack supports it.
     filename: 'static/js/[name].[chunkhash:8].js',
     chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
+    assetModuleFilename: 'static/media/[hash][ext][query]',
     // We inferred the "public path" (such as / or /my-project) from homepage.
     publicPath: publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
@@ -159,8 +165,6 @@ module.exports = {
         // Default number of concurrent runs: os.cpus().length - 1
         parallel: true,
         // Enable file caching
-        cache: true,
-        sourceMap: shouldUseSourceMap,
       }),
       new OptimizeCSSAssetsPlugin({
         cssProcessor: require('cssnano'),
@@ -208,12 +212,21 @@ module.exports = {
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
     },
+    fallback: {
+      assert: require.resolve('assert/'),
+      constants: require.resolve('constants-browserify'),
+      crypto: require.resolve('crypto-browserify'),
+      events: require.resolve('events/'),
+      http: require.resolve('stream-http'),
+      https: require.resolve('https-browserify'),
+      stream: require.resolve('stream-browserify'),
+      vm: require.resolve('vm-browserify'),
+      zlib: require.resolve('browserify-zlib'),
+    }
   },
   module: {
     strictExportPresence: true,
     rules: [
-      // Disable require.ensure as it's not a standard language feature.
-      { parser: { requireEnsure: false } },
       {
         // "oneOf" will traverse all following loaders until one will
         // match the requirements. When no loader matches it will fall
@@ -226,7 +239,7 @@ module.exports = {
             loader: require.resolve('url-loader'),
             options: {
               limit: 10000,
-              name: 'static/media/[name].[hash:8].[ext]',
+              name: 'static/media/[name].[contenthash:8].[ext]',
             },
           },
           // Process application JS with Babel.
@@ -319,43 +332,37 @@ module.exports = {
           // "css" loader resolves paths in CSS and adds assets as dependencies.
           // `MiniCSSExtractPlugin` extracts styles into CSS
           // files. If you use code splitting, async bundles will have their own separate CSS chunk file.
-          // By default we support CSS Modules with the extension .module.css
+          // By default we support CSS Modules with the extension .css
           {
             test: reactDatesCssRegex,
-            loader: getStyleLoaders({
+            use: getStyleLoaders({
               importLoaders: 1,
               sourceMap: shouldUseSourceMap,
             }),
           },
           // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
-          // using the extension .module.css
+          // using the extension .css
           {
             test: cssRegex,
             exclude: reactDatesCssRegex,
-            loader: getStyleLoaders({
+            use: getStyleLoaders({
               importLoaders: 1,
               sourceMap: shouldUseSourceMap,
-              modules: true,
-              getLocalIdent: getCSSModuleLocalIdent,
+              modules: {
+                getLocalIdent: getCSSModuleLocalIdent
+              },
             }),
           },
-          // "file" loader makes sure assets end up in the `build` folder.
+          // "asset" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
           // This loader doesn't use a "test" so it will catch all modules
           // that fall through the other loaders.
           {
-            loader: require.resolve('file-loader'),
-            // Exclude `js` files to keep "css" loader working as it injects
-            // it's runtime that would otherwise be processed through "file" loader.
-            // Also exclude `html` and `json` extensions so they get processed
-            // by webpacks internal loaders.
             exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
-            options: {
-              name: 'static/media/[name].[hash:8].[ext]',
-            },
+            type: 'asset/resource',
           },
           // ** STOP ** Are you adding a new loader?
-          // Make sure to add the new loader(s) before the "file" loader.
+          // Make sure to add the new loader(s) before the "asset" loader.
         ],
       },
     ],
@@ -366,7 +373,7 @@ module.exports = {
         {
           context: 'src',
           from: 'locales/**/*.json',
-          to: '[path]/[name].[hash:8].[ext]',
+          to: '[path]/[name].[contenthash:8].[ext]',
         },
       ],
     }),
@@ -408,7 +415,7 @@ module.exports = {
     // Generate a manifest file which contains a mapping of all asset filenames
     // to their corresponding output file so that tools can pick it up without
     // having to parse `index.html`.
-    new ManifestPlugin({
+    new WebpackManifestPlugin({
       fileName: 'asset-manifest.json',
       publicPath: publicPath,
     }),
@@ -446,17 +453,15 @@ module.exports = {
     // solution that requires the user to opt into importing specific locales.
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new webpack.IgnorePlugin({
+      resourceRegExp: /^\.\/locale$/,
+      contextRegExp: /moment$/,
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+      Buffer: ['buffer', 'Buffer'],
+    }),
   ],
-  // Some libraries import Node modules but don't use them in the browser.
-  // Tell Webpack to provide empty mocks for them so importing them works.
-  node: {
-    dgram: 'empty',
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty',
-    child_process: 'empty',
-  },
   // Turn off performance processing because we utilize
   // our own hints via the FileSizeReporter
   performance: false,

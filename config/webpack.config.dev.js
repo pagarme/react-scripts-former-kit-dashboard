@@ -17,7 +17,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter')
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const getClientEnvironment = require('./env')
 const paths = require('./paths')
-const ManifestPlugin = require('webpack-manifest-plugin')
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const postCSSLoaderOptions = require('./postCSSLoaderOptions')
 const CopyPlugin = require("copy-webpack-plugin")
 
@@ -38,7 +38,12 @@ const reactDatesCssRegex = /.*react-dates.*\.css/
 // common function to get style loaders
 const getStyleLoaders = (cssOptions, preProcessor) => {
   const loaders = [
-    require.resolve('style-loader'),
+    {
+      loader: require.resolve('style-loader'),
+      options: {
+        esModule: false,
+      },
+    },
     {
       loader: require.resolve('css-loader'),
       options: cssOptions,
@@ -48,7 +53,9 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
       // Adds vendor prefixing based on your specified browser support in
       // package.json
       loader: require.resolve('postcss-loader'),
-      options: postCSSLoaderOptions,
+      options: {
+        postcssOptions: postCSSLoaderOptions,
+      },
     },
   ]
   if (preProcessor) {
@@ -90,13 +97,15 @@ module.exports = {
   ],
   output: {
     // Add /* filename */ comments to generated require()s in the output.
+    path: paths.appBuild,
     pathinfo: true,
     // This does not produce a real file. It's just the virtual path that is
     // served by WebpackDevServer in development. This is the JS bundle
     // containing code from all our entry points, and the Webpack runtime.
-    filename: 'static/js/bundle.js',
+    filename: 'static/js/[name].[chunkhash:8].js',
     // There are also additional JS chunk files if you use code splitting.
     chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
+    assetModuleFilename: 'static/media/[hash][ext][query]',
     // This is the URL that app is served from. We use "/" in development.
     publicPath: publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
@@ -147,12 +156,21 @@ module.exports = {
       // resolves react references to avoid hooks multiple react error
       'react': path.dirname(require.resolve('react'))
     },
+    fallback: {
+      assert: require.resolve('assert/'),
+      constants: require.resolve('constants-browserify'),
+      crypto: require.resolve('crypto-browserify'),
+      events: require.resolve('events/'),
+      http: require.resolve('stream-http'),
+      https: require.resolve('https-browserify'),
+      stream: require.resolve('stream-browserify'),
+      vm: require.resolve('vm-browserify'),
+      zlib: require.resolve('browserify-zlib'),
+    },
   },
   module: {
     strictExportPresence: true,
     rules: [
-      // Disable require.ensure as it's not a standard language feature.
-      { parser: { requireEnsure: false } },
       // First, run the linter.
       // It's important to do this before Babel processes the JS.
       {
@@ -169,24 +187,28 @@ module.exports = {
         include: paths.srcPaths,
       },
       {
-        test: /\.css$/,
-        exclude: reactDatesCssRegex,
+        test: cssRegex,
+        exclude: [reactDatesCssRegex, /node_modules/],
         enforce: 'pre',
-        loader: require.resolve('postcss-loader'),
-        options: {
-          ...postCSSLoaderOptions,
-          plugins: () => [
-            require('stylelint', {
-              // @remove-on-eject-begin
-              config: {
-                extends: ['stylelint-config-pagarme-react'],
+        use: [
+          {
+            loader: require.resolve('postcss-loader'),
+            options: {
+              postcssOptions: {
+                ...postCSSLoaderOptions,
+                plugins: [
+                  require('stylelint')({
+                    // @remove-on-eject-begin
+                    config: {
+                      extends: ['stylelint-config-pagarme-react'],
+                    },
+                    // @remove-on-eject-end
+                  }),
+                ],
               },
-              // @remove-on-eject-end
-            }),
-            ...postCSSLoaderOptions.plugins,
-          ],
-        },
-        include: paths.appSrc,
+            },
+          },
+        ],
       },
       {
         // "oneOf" will traverse all following loaders until one will
@@ -209,33 +231,37 @@ module.exports = {
           {
             test: /\.(js|jsx|mjs)$/,
             include: paths.srcPaths,
-            loader: require.resolve('babel-loader'),
-            options: {
-              customize: require.resolve('babel-preset-react-app/webpack-overrides'),
-              // @remove-on-eject-begin
-              babelrc: false,
-              configFile: false,
-              // @remove-on-eject-end
-              presets: [require.resolve('babel-preset-react-app')],
-              plugins: [
-                require.resolve('@babel/plugin-syntax-dynamic-import'),
-                [
-                  require.resolve('babel-plugin-named-asset-import'),
-                  {
-                    loaderMap: {
-                      svg: {
-                        ReactComponent: '@svgr/webpack?-svgo![path]',
+            use: [
+              {
+                loader: require.resolve('babel-loader'),
+                options: {
+                  customize: require.resolve('babel-preset-react-app/webpack-overrides'),
+                  // @remove-on-eject-begin
+                  babelrc: false,
+                  configFile: false,
+                  // @remove-on-eject-end
+                  presets: [require.resolve('babel-preset-react-app')],
+                  plugins: [
+                    require.resolve('@babel/plugin-syntax-dynamic-import'),
+                    [
+                      require.resolve('babel-plugin-named-asset-import'),
+                      {
+                        loaderMap: {
+                          svg: {
+                            ReactComponent: '@svgr/webpack?-svgo![path]',
+                          },
+                        },
                       },
-                    },
-                  },
-                ],
-              ],
-              // This is a feature of `babel-loader` for webpack (not Babel itself).
-              // It enables caching results in ./node_modules/.cache/babel-loader/
-              // directory for faster rebuilds.
-              cacheDirectory: true,
-              highlightCode: true,
-            },
+                    ],
+                  ],
+                  // This is a feature of `babel-loader` for webpack (not Babel itself).
+                  // It enables caching results in ./node_modules/.cache/babel-loader/
+                  // directory for faster rebuilds.
+                  cacheDirectory: true,
+                  highlightCode: true,
+                },
+              },
+            ],
           },
           // Process any JS outside of the app with Babel.
           // Unlike the application JS, we only compile the standard ES features.
@@ -296,7 +322,7 @@ module.exports = {
           // "style" loader turns CSS into JS modules that inject <style> tags.
           // In production, we use a plugin to extract that CSS to a file, but
           // in development "style" loader enables hot editing of CSS.
-          // By default we support CSS Modules with the extension .module.css
+          // By default we support CSS Modules with the extension .css
           {
             test: reactDatesCssRegex,
             use: getStyleLoaders({
@@ -304,31 +330,25 @@ module.exports = {
             }),
           },
           // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
-          // using the extension .module.css
+          // using the extension .css
           {
             test: cssRegex,
             exclude: reactDatesCssRegex,
             use: getStyleLoaders({
               importLoaders: 1,
-              modules: true,
-              getLocalIdent: getCSSModuleLocalIdent,
+              modules: {
+                getLocalIdent: getCSSModuleLocalIdent,
+              },
             }),
           },
-          // "file" loader makes sure those assets get served by WebpackDevServer.
+          // "asset" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
           // In production, they would get copied to the `build` folder.
           // This loader doesn't use a "test" so it will catch all modules
           // that fall through the other loaders.
           {
-            // Exclude `js` files to keep "css" loader working as it injects
-            // its runtime that would otherwise be processed through "file" loader.
-            // Also exclude `html` and `json` extensions so they get processed
-            // by webpacks internal loaders.
             exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
-            loader: require.resolve('file-loader'),
-            options: {
-              name: 'static/media/[name].[hash:8].[ext]',
-            },
+            type: 'asset/resource',
           },
         ],
       },
@@ -375,25 +395,23 @@ module.exports = {
     // solution that requires the user to opt into importing specific locales.
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new webpack.IgnorePlugin({
+      resourceRegExp: /^\.\/locale$/,
+      contextRegExp: /moment$/,
+    }),
     // Generate a manifest file which contains a mapping of all asset filenames
     // to their corresponding output file so that tools can pick it up without
     // having to parse `index.html`.
-    new ManifestPlugin({
+    new WebpackManifestPlugin({
       fileName: 'asset-manifest.json',
       publicPath: publicPath,
     }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+      Buffer: ['buffer', 'Buffer'],
+    }),
   ],
 
-  // Some libraries import Node modules but don't use them in the browser.
-  // Tell Webpack to provide empty mocks for them so importing them works.
-  node: {
-    dgram: 'empty',
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty',
-    child_process: 'empty',
-  },
   // Turn off performance processing because we utilize
   // our own hints via the FileSizeReporter
   performance: false,
