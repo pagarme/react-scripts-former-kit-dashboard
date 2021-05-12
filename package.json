@@ -62,7 +62,7 @@
     "mini-css-extract-plugin": "0.8.0",
     "object-assign": "4.1.1",
     "optimize-css-assets-webpack-plugin": "5.0.3",
-    "postcss": "7.0.17",
+    "postcss": "8.2.10",
     "postcss-cssnext": "3.1.0",
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-hexrgba": "1.0.2",
