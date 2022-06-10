@@ -78,6 +78,7 @@
     "react-redux": "^8.0.2",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
+    "redux": "^4.2.0",
     "resolve": "1.11.0",
     "style-loader": "0.23.1",
     "stylelint": "10.1.0",
