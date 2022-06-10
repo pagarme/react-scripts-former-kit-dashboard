@@ -1,0 +1,37 @@
+name: Continuous Integration
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build_and_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cancel previous runs
+        if: ${{ github.ref != 'refs/heads/master' }}
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Project checkout
+        uses: actions/checkout@v3
+      
+      # - name: Add ca-certificates
+      #   run: apk add --no-cache ca-certificates
+
+      - name: NodeJs Setup
+        uses: actions/setup-node@v3
+      
+      - name: Install dependencies
+        run: yarn
+
+      - name: Run tests and build
+        run: | 
+          yarn global add create-react-app
+          create-react-app --scripts-version file:/$(pwd) testapp
+          cd testapp
+          npm test
+          npm run build
+
