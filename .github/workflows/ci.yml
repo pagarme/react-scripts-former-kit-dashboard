@@ -17,13 +17,10 @@ jobs:
 
       - name: Project checkout
         uses: actions/checkout@v3
-      
-      # - name: Add ca-certificates
-      #   run: apk add --no-cache ca-certificates
 
       - name: NodeJs Setup
         uses: actions/setup-node@v3
-      
+
       - name: Install dependencies
         run: yarn
 
