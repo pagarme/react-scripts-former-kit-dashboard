@@ -10,19 +10,20 @@ jobs:
     steps:
       - checkout
 
-      - restore_cache:
-          keys:
-          - yarn-cache
+      # - restore_cache:
+      #     keys:
+      #     - yarn-cache
 
       - run: |
           yarn global add create-react-app
+          yarn install
           create-react-app --scripts-version file:/$(pwd) testapp
           cd testapp
           npm run test
           npm run build
 
-      - save_cache:
-          paths:
-            - ~/.yarn-cache
-          key: yarn-cache
+      # - save_cache:
+      #     paths:
+      #       - ~/.yarn-cache
+      #     key: yarn-cache
 
