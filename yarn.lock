@@ -4169,9 +4169,9 @@ decimal.js-light@^2.4.1:
   integrity sha512-qIMFpTMZmny+MMIitAB6D7iVPEorVw6YQRWkvarTkT4tBeSLLiHzcwj6q0MmYSFCiVpiqPJTJEYIrpcPzVEIvg==
 
 decode-uri-component@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
-  integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.2.tgz#e69dbe25d37941171dd540e024c444cd5188e1e9"
+  integrity sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ==
 
 deep-equal@^1.0.1:
   version "1.1.1"
@@ -5599,7 +5599,7 @@ former-kit-skin-pagarme@2.15.0:
     emblematic-icons "0.11.0"
     react-dates "18.4.1"
 
-former-kit@^2.16.0:
+former-kit@2.16.0:
   version "2.16.0"
   resolved "https://registry.yarnpkg.com/former-kit/-/former-kit-2.16.0.tgz#2d4cabc0775c81f259905baa2b80522808b85d7b"
   integrity sha512-etg2xo8/1aqfeK1d2ABB0H1yZD2tx1KJ7z1E9UgZR2OgyDAZM6zAmvQCzE6gpDeUmJ3P7YxmeszunTrCcWLfOw==
